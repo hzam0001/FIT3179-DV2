@@ -19,13 +19,23 @@
     },
     {
       "data": {
+        "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/main/Week9_HW/data/world_map.topojson",
+        "format": { "type": "topojson", "feature": "ne_110m_graticules_30" }
+      },
+      "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray", "strokeWidth": 0.6 }
+    },
+    {
+      "data": {
         "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/main/Week9_HW/data/total_missions.csv"
       },
       "transform": [
         { "filter": "datum.Year >= 1957 && datum.Year <= 1991" },
         { "calculate": "toNumber(datum.Latitude)", "as": "lat_num" },
         { "calculate": "toNumber(datum.Longitude)", "as": "lon_num" },
-        { "aggregate": [{ "op": "count", "as": "mission_count" }], "groupby": ["Country", "lat_num", "lon_num"] }
+        {
+          "aggregate": [{ "op": "count", "as": "mission_count" }],
+          "groupby": ["Country", "lat_num", "lon_num"]
+        }
       ],
       "mark": {
         "type": "circle",
@@ -56,3 +66,4 @@
     }
   ]
 }
+
