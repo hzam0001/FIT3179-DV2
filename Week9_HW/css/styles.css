@@ -1,0 +1,26 @@
+/* default margins */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Container for map */
+#total_mission_map {
+  position: relative; /* keeps it placed within the page flow */
+  margin: 50px auto; /* centers horizontally with space on top */
+  width: 900px;
+  height: 500px;
+  border: 1px solid #ddd; /* light border to frame the map */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  background-color: white; /* background behind the map */
+  padding: 10px; /* some spacing inside */
+}
+
+/* Title styling */
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
