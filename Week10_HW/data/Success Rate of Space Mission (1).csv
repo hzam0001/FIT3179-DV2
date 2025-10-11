@@ -1,0 +1,243 @@
+Mission Name,year,month,Space Agency,Mission Type,Launch Vehicle,Destination,Payload Type,Outcome
+Biosatellite 1,1966,june,NASA,Research,Delta G,LEO,biological research experiments,0
+Biosatellite 2,1967,feburary,NASA,Research,Delta G,LEO,biological research experiments,1
+Biosatellite 3,1969,march,NASA,Research,Delta N,LEO,biological research experiments,1
+Mariner 1,1962,july,NASA,Flyby,Atlas-LV3 Agena-B,venus,scientific instrument,0
+Mariner 2,1962,august,NASA,Flyby,Atlas-LV3 Agena-B,venus,scientific instrument,1
+Mariner 3,1965,november,NASA,Flyby,Atlas LV-3 Agena-D,mars,scientific instrument,0
+Mariner 4,1964,november,NASA,Flyby,Atlas LV-3 Agena-D,mars,scientific instrument,1
+Mariner 5,1967,june,NASA,Flyby,Atlas SLV-3 Agena-D,venus,scientific instrument,1
+Mariner 6,1969,feburuary,NASA,Flyby,Atlas SLV-3C Centaur-D,mars,scientific instrument,1
+Mariner 7,1969,march,NASA,Flyby,Atlas SLV-3C Centaur-D,mars,scientific instrument,1
+Mariner 8,1973,december,NASA,orbiter,Atlas SLV-3C Centaur-D,mars,scientific instrument,0
+Mariner 9,1971,may,NASA,orbiter,Atlas SLV-3C Centaur-D,mars,scientific instrument,1
+Mariner 10,1973,november,NASA,Flyby,Atlas SLV-3D Centaur-D1A,mercury,scientific instrument,1
+Ranger 1,1961,august,NASA,impact,Juno II,moon,scientific instrument,0
+Ranger 2,1961,november,NASA,impact,Juno II,moon,scientific instrument,0
+Ranger 3,1962,january,NASA,impact,Atlas-Agena B,moon,scientific instrument,1
+Ranger 4,1962,april,NASA,impact,Atlas-Agena B,moon,scientific instrument,0
+Ranger 5,1962,october,NASA,impact,Atlas-Agena B,moon,scientific instrument,1
+Ranger 6,1964,januaray,NASA,impact,Atlas LV-3,moon,scientific instrument,0
+Ranger 7,1964,july,NASA,impact,Atlas LV-3,moon,scientific instrument,1
+Ranger 8,1965,feburary,NASA,impact,Atlas LV-3,moon,scientific instrument,1
+Ranger 9,1965,march,NASA,impact,Juno II,moon,scientific instrument,1
+Pioneer 0,1958,august,NASA,probe,Juno II,moon,scientific instrument,0
+Pioneer 1,1958,october,NASA,orbiter,Juno II,moon,scientific instrument,1
+Pioneer 2,1958,november,NASA,orbiter,Juno II,moon,scientific instrument,0
+Pioneer 3  ,1958,december,NASA,probe,Juno II,moon,scientific instrument,0
+Pioneer 4   ,1959,march,NASA,probe,Juno II,moon,scientific instrument,1
+Pioneer 5,1960,march,NASA,probe,Thor-Delta,sun,scientific instrument,1
+Pioneer 6 ,1965,december,NASA,probe,Thor-Delta,sun,scientific instrument,1
+Pioneer 7 ,1966,august,NASA,probe,Thor-Delta,sun,scientific instrument,1
+Pioneer 8 ,1967,january,NASA,probe,Thor-Delta,sun,scientific instrument,1
+Pioneer 9 ,1968,august,NASA,probe,Thor-Delta,sun,scientific instrument,1
+Pioneer 10,1972,march,NASA,probe,Atlas-Centaur,jupyter,scientific instrument,1
+Surveyor-Model 1,1966,May,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor SD-1,1966,November,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor SD-2,1967,January,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor-Model 2,1966,November,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor 1,1966,May,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor 2,1966,September,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor-Model 3,1967,January,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor 3,1967,April,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor 4,1967,July,NASA,lander,Atlas-Centaur,moon,scientific instrument,0
+Surveyor 5,1967,August,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor 6,1967,November,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Surveyor 7,1968,January,NASA,lander,Atlas-Centaur,moon,scientific instrument,1
+Huygens,1997,october,ESA,lander,Titan IVB,Titan,scientific instrument,1
+INTEGRAL,2002,october,ESA,orbiter,Soyuz-FG,LEO,scientific instrument,1
+Planck,2009,may,ESA,orbiter,Ariane 5,sun,scientific instrument,1
+Huygens,1997,october,ESA,lander,Titan IVB,Titan,scientific instrument,1
+INTEGRAL,2002,october,ESA,orbiter,Soyuz-FG,LEO,scientific instrument,1
+Planck,2009,may,ESA,orbiter,Ariane 5,sun,scientific instrument,1
+Gaia,2013,december,ESA,orbiter,Soyuz FG,L2,scientific instrument,1
+LISA Pathfinder,2015,december,ESA,orbiter,Vega,L1,scientific instrument,1
+BepiColombo,2018,october,ESA,orbiter,Ariane 5,mercury,scientific instrument,1
+CHEOPS,2019,december,ESA,orbiter,Soyuz-Fregat,LEO,scientific instrument,1
+Solar Orbiter,2020,february,ESA,orbiter,Atlas V 411,L2,scientific instrument,1
+Euclid,2023,july,ESA,orbiter,falcon 9,sun,scientific instrument,1
+Venus Express,2005,november,ESA,orbiter,Soyuz-FG/Fregat,venus,scientific instrument,1
+YES2,2007,september,ESA,demonstrator,Foton-M3,LEO,technology demonstrator,0
+GIOVE-B,2008,april,ESA,orbiter,Soyuz-FG/Fregat,MEO,navigation,1
+foton-M3,2007,april,ESA,orbiter,Soyuz-FG,LEO,scientific instrument,0
+GOCE,2009,march,ESA,orbiter,Vega,LEO,scientific instrument,0
+phobos-grunt,2011,november,ESA,lander,Zenit-2,mars,scientific instrument,0
+herschel,2009,may,ESA,orbiter,Ariane 5,sun,scientific instrument,0
+Shenzhou 1,1999,november,CNSA,demonstrator,Long March 2F,LEO,scientific instrument,1
+Shenzhou 2,2001,january,CNSA ,demonstrator,Long March 2F,LEO,scientific instrument,0
+Shenzhou 3,2002,march,CNSA,demonstrator,Long March 2F,LEO,scientific instrument,1
+Shenzhou 4,2002,december,CNSA,demonstrator,Long March 2F,LEO,scientific instrument,1
+Shenzhou 5,2003,october,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 6,2005,october,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 7,2008,september,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 8,2011,november,CNSA,demonstrator,Long March 2F,LEO,scientific instrument,1
+Shenzhou 9,2012,june,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 10,2013,june,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 11,2016,october,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 12,2021,june,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 13,2021,october,CNSA,orbiter,Long March 2F,LEO,crewed,1
+Shenzhou 14,2022,june,CNSA,orbiter,Long March 2F,LEO,scientific instrument,1
+Shenzhou 15,2022,november,CNSA,orbiter,Long March 2F,LEO,scientific instrument,1
+Chang'e 1,2007,october,CNSA,orbiter,Long March 3A,moon,scientific instrument,1
+Chang'e 2,2010,october,CNSA,orbiter,Long March 3C,moon,uncrewed,1
+Chang'e 3,2013,december,CNSA,dual component,Long March 3B,moon,uncrewed,1
+Chang'e 4,2018,december,CNSA,dual component,Long March 3B,moon,uncrewed,1
+Chang'e 5,2020,november,CNSA,dual component,Long March 5,moon,uncrewed,1
+Tianwen-1,2020,july,CNSA,triad,Long March 5,mars,uncrewed,1
+Tiangong-1,2011,september,CNSA,demonstrator,Long March 2F,LEO,crewed,1
+Tiangong-2,2016,september,CNSA,demonstrator,Long March 2F,LEO,crewed,1
+Tianzhou-1,2017,april,CNSA,cargo,Long March 7,LEO,uncrewed,1
+Tianzhou-2,2021,may,CNSA,cargo,Long March 7,LEO,uncrewed,1
+Tianzhou-3,2021,september,CNSA,cargo,Long March 7,LEO,uncrewed,1
+Tianzhou-4,2022,may,CNSA,cargo,Long March 7,LEO,uncrewed,1
+Tianhe,2021,april,CNSA,orbiter,Long March 5B,LEO,crewed,1
+Wentian,2022,july,CNSA,orbiter,Long March 5B,LEO,crewed,1
+Mengtian,2022,october,CNSA,orbiter,Long March 5B,LEO,crewed,1
+HXMT (Insight),2017,june,CNSA,orbiter,Long March 4B,Earth Orbit,scientific instrument,1
+Queqiao,2018,may,CNSA,satellite,Long March 4C,L2,communication,1
+BeiDou Satellite,2000,october,CNSA,orbiter,Long March 3A,Earth Orbit,navigation,1
+Fengyun-4,2016,december,CNSA,orbiter,Long March 3B,GEO,scientific instrument,1
+Dong Fang Hong 1A,1970,april,CNSA,orbiter,Long March 1,Earth Orbit,communication,1
+Shiyan 2,2004,november,CNSA,demonstrator,Long March 2D,Earth Orbit,scientific instrument,1
+Fengyun 2-4,2004,october,CNSA,satellite,Long March 3A,GEO,scientific instrument,1
+SJ-11-04,2011,october,CNSA,satellite,Long March 2C,Earth Orbit,scientific instrument,1
+Chang Zheng 3B (Intelsat 708),1996,february,CNSA,launch vehicle,Long March 3B,GEO,communication,0
+CBERS-3,2013,december,CNSA,satellite,Long March 4B,Earth Orbit,scientific instrument,0
+Shijian 18,2017,july,CNSA,satellite,Long March 5,GEO,communication,0
+Beidou-2 IGSO-5,2010,august,CNSA,satellite,Long March 3A,Earth Orbit,navigation,1
+Long March 3B (Palapa-N1),2020,april,CNSA,launch vehicle,Long March 3B,GEO,communication,0
+Yaogan 33,2020,may,CNSA,satellite,Long March 4C,Earth Orbit,reconnaissance,0
+Apstar 7A,2012,march,CNSA,satellite,Long March 3B,GEO,communication,0
+Long March 5 (2017),2017,july,CNSA,experiment,Long March 5,Earth Orbit,scientific instrument,0
+Chang?e 5-T1 Return Capsule,2014,october,CNSA,sample return,Long March 3C,Earth orbit,uncrewed,1
+Zhongxing-9A,2017,june,CNSA,satellite,Long March 3B,GEO,communication,1
+Tianzhou 1 (docking test),2017,april,CNSA,cargo,Long March 7,LEO,uncrewed,1
+Dong Fang Hong 2,1984,april,CNSA,satellite,Long March 3,Earth Orbit,communication,1
+Shenzhou 2,2001,january,CNSA,crewed,Long March 2F,LEO,crewed,1
+Fengyun 1-4,2002,december,CNSA,satellite,Long March 4B,Earth Orbit,scientific instrument,1
+Fengyun 3B,2010,november,CNSA,satellite,Long March 4C,Polar Orbit,scientific instrument,1
+Chuangxin 1-02,2008,november,CNSA,satellite,Long March 2D,Earth Orbit,communication,1
+Beidou 1A,2000,october,CNSA,satellite,Long March 3A,Earth Orbit,navigation,1
+Long March 4B (Huanjing-1C),2012,november,CNSA,sample return,Long March 4B,Earth Orbit,scientific instrument,1
+SJ-5 (Shijian 5),1999,may,CNSA,satellite,Long March 4B,Earth Orbit,scientific instrument,1
+Beidou-2 M1,2007,february,CNSA,satellite,Long March 3A,Earth Orbit,navigation,1
+SJ-8 (Shijian 8),2006,september,CNSA,satellite,Long March 2C,Earth Orbit,scientific instrument,1
+Long March 2E (Optus B2),1992,december,CNSA,launch vehicle,Long March 2E,GEO,communication,0
+Tiantuo 1,2012,may,CNSA,demonstrator,Long March 2D,LEO,scientific instrument,1
+Chinasat-6A,2010,september,CNSA,satellite,Long March 3B,GEO,communication,1
+Apstar 2,1994,january,CNSA,satellite,Long March 2E,GEO,communication,0
+Tianzhou-2 (docking test),2021,may,CNSA,cargo,Long March 7,LEO,uncrewed,1
+Hayabusa,2003,May,JAXA,sample return,M-V,asteroid,scientific instrument,1
+Hayabusa2,2014,Dec,JAXA,sample return,H-IIA,asteroid,scientific instrument,1
+Akatsuki,2010,May,JAXA,orbiter,H-IIA,venus,scientific instrument,1
+Kibo Module,2008,June,JAXA,Laboratory,Space Shuttle,ISS,scientific instrument,1
+Himawari-8,2014,Oct,JMA,satellite,H-IIA,GEO,Earth Observation,1
+SLIM,2023,TBD,JAXA,lander,H-IIA,moon,technology demonstrator,1
+HTV-1,2009,Sep,JAXA,cargo,H-IIB,ISS,Cargo,1
+IKAROS,2010,May,JAXA,demonstrator,H-IIA,venus,Solar Sail,1
+ALOS,2006,Jan,JAXA,satellite,H-IIA,Earth orbit,Earth Observation,1
+BepiColombo,2018,Oct,JAXA/ESA,orbiter,Ariane 5,mercury,scientific instrument,1
+Nozomi,1998,Jul,ISAS,orbiter,M-V,mars,scientific instrument,0
+ASTRO-E,2000,Feb,ISAS,Telescope,M-V,Earth orbit,X-ray Telescope,0
+Hitomi (ASTRO-H),2016,Feb,JAXA,Telescope,H-IIA,Earth orbit,X-ray Telescope,0
+OHO,1966,Sep,ISAS,satellite,Lambda,Earth orbit,Earth Observation,0
+JERS-1,1992,Feb,NASDA,satellite,H-I,Earth orbit,Earth Observation,1
+Hiten,1990,Jan,ISAS,orbiter,M-3SII,moon,Lunar Science Instrument,0
+PLANET-C,2010,May,JAXA,orbiter,H-IIA,venus,scientific instrument,1
+MOMO Rocket,2017,Jul,Interstellar,demonstrator,MOMO,Suborbital,Experimental Payload,0
+H-IIA,2001,Aug,NASDA/JAXA,launch vehicle,H-IIA,LEO,Experimental Payload,1
+Hisaki (SPRINT-A),2013,Sep,JAXA,Telescope,Epsilon,Earth orbit,Planetary Observation,1
+Geotail,1992,Jul,ISAS/NASA,satellite,Delta II,Earth orbit,scientific instrument,1
+Minerva,2005,May,JAXA,Rover,M-V (Hayabusa),asteroid,Exploration Rover,0
+ASTRO-E2 (Suzaku),2005,Jul,JAXA,Telescope,M-V,Earth orbit,X-ray Telescope,1
+Asuka (ASTRO-D),1987,Feb,ISAS,Telescope,M-3SII,Earth orbit,X-ray Telescope,1
+Astro-C (Ginga),1987,Feb,ISAS,Telescope,M-3SII,Earth orbit,X-ray Telescope,1
+HELIOS,1974,Dec,ISAS,probe,Lambda,Earth orbit,Solar Science Instrument,0
+Aqua,2002,May,NASA/JAXA,satellite,Delta II,Earth orbit,Earth Observation,1
+AMS-01,1998,Jun,NASA/ISAS,Detector,Space Shuttle,LEO,Cosmic Ray Detector,1
+AKARI,2006,Feb,JAXA,Telescope,M-V,Earth orbit,Infrared Telescope,1
+IGS Radar 1,2003,Mar,JAXA,satellite,H-IIA,Earth orbit,Earth Observation,1
+SAKURA,1982,Jun,NASDA,satellite,N-I,GEO,communication,1
+H-II Transfer Vehicle 2,2011,Jan,JAXA,cargo,H-IIB,ISS,Cargo,1
+Daichi 2 (ALOS-2),2014,May,JAXA,satellite,H-IIA,Earth orbit,Earth Observation,1
+OICETS,2005,Aug,JAXA,demonstrator,Dnepr,Earth orbit,Optical Communications,1
+SHINSEI,1971,Sep,ISAS,satellite,Lambda,Earth orbit,scientific instrument,1
+Hinotori,1981,Feb,ISAS,Telescope,M-3SII,Earth orbit,X-ray Telescope,1
+Kaguya (SELENE),2007,Sep,JAXA,orbiter,H-IIA,moon,Lunar Science Instruments,1
+TANSEI 4,1981,Feb,ISAS,launch vehicle,Lambda,Earth orbit,Experimental Payload,1
+WINDS,2008,Feb,JAXA/NASDA,satellite,H-IIA,GEO,communication,1
+KIKU-8,2006,Dec,JAXA,satellite,H-IIA,GEO,communication,1
+JCSAT-1,1989,Mar,JCSAT/NASDA,satellite,Ariane 4,GEO,communication,1
+Tanpopo,2015,Apr,JAXA,experiment,ISS (HTV-5),LEO,Astrobiology Experiment,1
+ASTRO-B,1979,Feb,ISAS,Telescope,Lambda,Earth orbit,X-ray Telescope,0
+LUCAS,1983,Jan,NASDA,satellite,N-II,GEO,communication,1
+ARK,1985,Feb,NASDA,demonstrator,N-II,GEO,Environmental Research,1
+Kosmos 670,1974,August,ROSCOSMOS,orbiter,Soyuz U,LEO,scientific instrument,1
+Kosmos 772,1975,September,ROSCOSMOS,orbiter,Soyuz U,LEO,communication,0
+Kosmos 869,1976,November,ROSCOSMOS,orbiter,Soyuz U,LEO,communication,0
+Kosmos 1001,1978,December,ROSCOSMOS,orbiter,Soyuz U,LEO,scientific instrument,0
+Kosmos 1074,1979,November,ROSCOSMOS,orbiter,Soyuz U,LEO,Environmental Monitoring,1
+Soyuz T-1,1979,December,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-2,1980,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-3,1980,November,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-4,1981,March,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-5,1982,May,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-6,1982,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-7,1982,August,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-8,1983,April,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz T-9,1983,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-10A,1983,September,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz T-10,1984,February,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-11,1984,April,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-12,1984,July,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-13,1985,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-14,1985,September,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz T-15,1986,March,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Kosmos 133,1966,November,ROSCOSMOS,orbiter,Soyuz U,LEO,reconnaissance,0
+Soyuz 7K-OK No.1,1966,December,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Kosmos 140,1967,February,ROSCOSMOS,orbiter,Soyuz U,LEO,scientific instrument,1
+Soyuz 1,1967,April,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Kosmos 186,1967,October,ROSCOSMOS,orbiter,Soyuz U,LEO,scientific instrument,1
+Kosmos 188,1967,October,ROSCOSMOS,orbiter,Soyuz U,LEO,scientific instrument,1
+Soyuz 2,1968,October,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 3,1968,October,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 4,1969,January,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 5,1969,January,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 6,1969,October,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 7,1969,October,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 8,1969,October,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 9,1970,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 10,1971,April,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 11,1971,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 12,1973,September,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 13,1973,December,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 14,1974,July,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 15,1974,August,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 16,1974,December,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 17,1975,January,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 18,1975,May,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 18a,1975,April,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 19,1975,July,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 21,1976,July,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 22,1976,September,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 23,1976,October,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 24,1977,February,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 25,1977,October,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 26,1977,December,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 27,1978,January,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 28,1978,March,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 29,1978,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 30,1978,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 31,1978,August,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 32,1979,February,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 33,1979,April,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,0
+Soyuz 34,1979,June,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 35,1980,April,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 36,1980,May,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Soyuz 37,1980,July,ROSCOSMOS,crewed,Soyuz U,LEO,crewed,1
+Vostok 1,1961,April,ROSCOSMOS,crewed,Vostok-K,LEO,crewed,1
+Vostok 2,1961,August,ROSCOSMOS,crewed,Vostok-K,LEO,crewed,1
+Vostok 3,1962,August,ROSCOSMOS,crewed,Vostok-K,LEO,crewed,1
+Vostok 4,1962,August,ROSCOSMOS,crewed,Vostok-K,LEO,crewed,1
+Vostok 5,1963,June,ROSCOSMOS,crewed,Vostok-K,LEO,crewed,1
+Vostok 6,1963,June,ROSCOSMOS,crewed,Vostok-K,LEO,crewed,1
