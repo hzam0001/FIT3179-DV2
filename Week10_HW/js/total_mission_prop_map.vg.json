@@ -3,7 +3,7 @@
   "width": 900,
   "height": 500,
   "title": {
-    "text": "Total Mission Launches by Country (1957-1991)",
+    "text": "Total Missile Launches by Country (1957-1991)",
     "fontSize": 18,
     "font": "Arial",
     "anchor": "middle"
@@ -50,7 +50,7 @@
         "size": {
           "field": "mission_count",
           "type": "quantitative",
-          "title": "Number of Missions",
+          "title": "Number of Missiles",
           "scale": { "type": "sqrt", "domain": [1, 4325], "range": [50, 3000] },
           "legend": {
             "values": [10, 100, 500, 1200],
@@ -60,7 +60,7 @@
         },
         "tooltip": [
           { "field": "Country", "type": "nominal", "title": "Country" },
-          { "field": "mission_count", "type": "quantitative", "title": "Total Missions", "format": "," }
+          { "field": "mission_count", "type": "quantitative", "title": "Total Missiles", "format": "," }
         ]
       }
     }
