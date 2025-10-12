@@ -1,0 +1,138 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 600,
+  "title": {
+    "text": "Launch Vehicle Performance: Success Rate vs Mission Count",
+    "fontSize": 16,
+    "anchor": "middle"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/Week10_HW/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
+  },
+  "params": [
+    {
+      "name": "Agency_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "NASA", "ROSCOSMOS", "ESA", "CNSA", "JAXA", "JMA", "NASDA"],
+        "labels": ["Show All", "NASA", "ROSCOSMOS", "ESA", "CNSA", "JAXA", "JMA", "NASDA"],
+        "name": "Space Agency: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "indexof(['NASA','ROSCOSMOS','ESA','CNSA','JAXA','JMA','NASDA'], datum['Space Agency']) >= 0"
+    },
+    {
+      "filter": "Agency_selection == null || datum['Space Agency'] == Agency_selection"
+    },
+    {
+      "aggregate": [
+        { "op": "count", "as": "Mission_Count" },
+        { "op": "mean", "field": "Outcome", "as": "Success_Mean" }
+      ],
+      "groupby": ["Launch Vehicle", "Space Agency"]
+    },
+    {
+      "calculate": "datum.Success_Mean * 100",
+      "as": "Success_Rate"
+    },
+    {
+      "filter": "datum.Mission_Count > 0"
+    },
+    {
+      "window": [
+        { "op": "rank", "as": "rank" }
+      ],
+      "sort": [
+        { "field": "Mission_Count", "order": "descending" }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Mission_Count",
+      "type": "quantitative",
+      "title": "Mission Count (total launches)",
+      "axis": { "grid": false, "tickCount": 7 },
+      "scale": { "type": "log", "domain": [1, 70] }
+    },
+    "y": {
+      "field": "Success_Rate",
+      "type": "quantitative",
+      "title": "Success Rate (%)",
+      "axis": { "grid": false, "tickCount": 6 },
+      "scale": { "domain": [0, 100] }
+    },
+    "tooltip": [
+      { "field": "Launch Vehicle", "type": "nominal", "title": "Launch Vehicle" },
+      { "field": "Space Agency", "type": "nominal", "title": "Space Agency" },
+      { "field": "Mission_Count", "type": "quantitative", "title": "Mission Count", "format": "," },
+      { "field": "Success_Rate", "type": "quantitative", "title": "Success Rate (%)", "format": ".1f" }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.6,
+        "stroke": "white",
+        "strokeWidth": 0.6
+      },
+      "encoding": {
+        "size": { "value": 350 },
+        "color": {
+          "field": "Launch Vehicle",
+          "type": "nominal",
+          "title": "Launch Vehicle",
+          "scale": {
+            "domain": [
+              "Atlas SLV-3D Centaur-D1A","Thor-Delta","Atlas-Centaur","Atlas SLV-3C Centaur-D",
+              "Atlas LV-3","Atlas LV-3 Agena-D","Juno II","Vostok-K","Soyuz U","Falcon 9",
+              "Soyuz-FG/Fregat","Ariane 5","Soyuz-FG","Vega","Zenit-2","Long March 3",
+              "Long March 2C","Long March 2D","Long March 7","Long March 2F","Long March 4B",
+              "Long March 4C","Long March 3B","Long March 5","Long March 2E","ISS (HTV-5)",
+              "H-IIB","M-V","H-IIA","M-V (Hayabusa)","N-I","N-II"
+            ],
+            "scheme": "category20"
+          },
+          "legend": {
+            "orient": "right",
+            "columns": 1,
+            "values": [
+              "Atlas SLV-3D Centaur-D1A","Thor-Delta","Atlas-Centaur","Atlas SLV-3C Centaur-D",
+              "Atlas LV-3","Atlas LV-3 Agena-D","Juno II","Vostok-K","Soyuz U","Falcon 9",
+              "Soyuz-FG/Fregat","Ariane 5","Soyuz-FG","Vega","Zenit-2","Long March 3",
+              "Long March 2C","Long March 2D","Long March 7","Long March 2F","Long March 4B",
+              "Long March 4C","Long March 3B","Long March 5","Long March 2E","ISS (HTV-5)",
+              "H-IIB","M-V","H-IIA","M-V (Hayabusa)","N-I","N-II"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -6
+      },
+      "encoding": {
+        "text": { "field": "Launch Vehicle", "type": "nominal" },
+        "opacity": {
+          "condition": {
+            "test": "datum.rank <= 10 || datum.Mission_Count >= 20 || datum.Success_Rate < 50",
+            "value": 1
+          },
+          "value": 0
+        },
+        "color": { "value": "black" }
+      }
+    }
+  ]
+}
