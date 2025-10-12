@@ -90,7 +90,7 @@
           "scale": {
             "domain": [
               "Atlas SLV-3D Centaur-D1A","Thor-Delta","Atlas-Centaur","Atlas SLV-3C Centaur-D",
-              "Atlas LV-3","Atlas LV-3 Agena-D","Juno II","Vostok-K","Soyuz U","Falcon 9",
+              "Atlas LV-3","Atlas LV-3 Agena-D","Juno II","Vostok-K","Soyuz U","falcon 9",
               "Soyuz-FG/Fregat","Ariane 5","Soyuz-FG","Vega","Zenit-2","Long March 3",
               "Long March 2C","Long March 2D","Long March 7","Long March 2F","Long March 4B",
               "Long March 4C","Long March 3B","Long March 5","Long March 2E","ISS (HTV-5)",
@@ -103,7 +103,7 @@
             "columns": 1,
             "values": [
               "Atlas SLV-3D Centaur-D1A","Thor-Delta","Atlas-Centaur","Atlas SLV-3C Centaur-D",
-              "Atlas LV-3","Atlas LV-3 Agena-D","Juno II","Vostok-K","Soyuz U","Falcon 9",
+              "Atlas LV-3","Atlas LV-3 Agena-D","Juno II","Vostok-K","Soyuz U","falcon 9",
               "Soyuz-FG/Fregat","Ariane 5","Soyuz-FG","Vega","Zenit-2","Long March 3",
               "Long March 2C","Long March 2D","Long March 7","Long March 2F","Long March 4B",
               "Long March 4C","Long March 3B","Long March 5","Long March 2E","ISS (HTV-5)",
