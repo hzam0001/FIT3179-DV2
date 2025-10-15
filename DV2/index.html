@@ -64,6 +64,14 @@
       </div>
     </div>
 
+    <!-- Section: Cold War vs Post Cold War -->
+    <section class="section-title">
+      <h2>Cold War vs Post Cold War: Global Shift in Space Launch Activities</h2>
+    </section>
+
+    <!-- Full-width map chart -->
+    <div id="combined_prop_symbol_map" class="vis full-width vis-pad"></div>
+
     <!-- Footer / credits -->
     <footer class="footer">
       <p>Visualisation created by hiba — data: All_space_missions.csv</p>
@@ -71,14 +79,14 @@
 
   </div> <!-- /.page -->
 
-  <!-- Embed the two Vega-Lite specs (adjust paths if needed) -->
+  <!-- Embed the Vega-Lite specs -->
   <script>
     // Use renderer: 'svg' so SVG elements' styles can be overridden by CSS.
     const embedOpts = { actions: false, renderer: 'svg' };
 
-    // Adjust these paths if used raw GitHub URLs or different folder layout
     vegaEmbed('#launch_per_year', 'js/launch_per_year.vg.json', embedOpts).catch(console.error);
     vegaEmbed('#launch_per_country_dual_axis', 'js/launch_per_country_dual_axis.vg.json', embedOpts).catch(console.error);
+    vegaEmbed('#combined_prop_symbol_map', 'js/combined_prop_symbol_map.vg.json', embedOpts).catch(console.error);
   </script>
 
 </body>

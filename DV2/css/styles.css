@@ -182,6 +182,28 @@ body {
   font-size: 12px;
 }
 
+/* Vega parameter controls (dropdown) styling */
+.vega-bind {
+  color: white !important;
+}
+
+.vega-bind-name {
+  color: white !important;
+}
+
+.vega-bind select {
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: white !important;
+  border: 1px solid #4da6ff !important;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.vega-bind select option {
+  background: #1a1a2e !important;
+  color: white !important;
+}
+
 /* Responsive behavior on small screens */
 @media (max-width: 900px) {
   .two-col-row {
