@@ -15,7 +15,7 @@ body {
 
 /* Page container */
 .page {
-  max-width: 1200px; /* keep page narrow to avoid horizontal scroll */
+  max-width: 900px; /* keep page narrow to avoid horizontal scroll */
   margin: 24px auto;
   padding: 20px;
   background: rgba(
