@@ -1,0 +1,592 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Success and failure rates for top 6 rockets",
+  "background": "white",
+  "config": {
+    "view": {"stroke": "transparent"}
+  },
+  "title": {
+    "text": "Top 6 Highest Used Rockets Success and Failure Rates",
+    "anchor": "middle",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "offset": 20
+  },
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "width": 200,
+          "height": 200,
+          "data": {
+            "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
+          },
+          "transform": [
+            {
+              "filter": "datum['Launch Vehicle'] == 'Soyuz U'"
+            },
+            {
+              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
+              "as": "Status"
+            },
+            {
+              "aggregate": [{"op": "count", "as": "count"}],
+              "groupby": ["Status"]
+            },
+            {
+              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
+            },
+            {
+              "calculate": "datum.count / datum.total * 100",
+              "as": "percentage"
+            },
+            {
+              "calculate": "format(round(datum.percentage), '.0f') + '%'",
+              "as": "pct_label"
+            },
+            {
+              "calculate": "'Soyuz U: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
+              "as": "tooltip_text"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {"type": "arc", "innerRadius": 50},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative"},
+                "color": {
+                  "field": "Status",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": ["Success", "Failure"],
+                    "range": ["#2ca02c", "#d62728"]
+                  },
+                  "legend": null
+                },
+                "tooltip": {"field": "tooltip_text", "type": "nominal", "title": null}
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 70},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage >= 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 95},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#111"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage < 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 13,
+                "fontWeight": "bold",
+                "color": "#111"
+              },
+              "encoding": {
+                "x": {"value": 100},
+                "y": {"value": 100},
+                "text": {"value": "Soyuz U"}
+              }
+            }
+          ]
+        },
+        {
+          "width": 200,
+          "height": 200,
+          "data": {
+            "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
+          },
+          "transform": [
+            {
+              "filter": "datum['Launch Vehicle'] == 'Juno II'"
+            },
+            {
+              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
+              "as": "Status"
+            },
+            {
+              "aggregate": [{"op": "count", "as": "count"}],
+              "groupby": ["Status"]
+            },
+            {
+              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
+            },
+            {
+              "calculate": "datum.count / datum.total * 100",
+              "as": "percentage"
+            },
+            {
+              "calculate": "format(round(datum.percentage), '.0f') + '%'",
+              "as": "pct_label"
+            },
+            {
+              "calculate": "'Juno II: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
+              "as": "tooltip_text"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {"type": "arc", "innerRadius": 50},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative"},
+                "color": {
+                  "field": "Status",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": ["Success", "Failure"],
+                    "range": ["#2ca02c", "#d62728"]
+                  },
+                  "legend": null
+                },
+                "tooltip": {"field": "tooltip_text", "type": "nominal", "title": null}
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 70},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage >= 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 95},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#111"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage < 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 13,
+                "fontWeight": "bold",
+                "color": "#111"
+              },
+              "encoding": {
+                "x": {"value": 100},
+                "y": {"value": 100},
+                "text": {"value": "Juno II"}
+              }
+            }
+          ]
+        },
+        {
+          "width": 200,
+          "height": 200,
+          "data": {
+            "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
+          },
+          "transform": [
+            {
+              "filter": "datum['Launch Vehicle'] == 'Long March 3B'"
+            },
+            {
+              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
+              "as": "Status"
+            },
+            {
+              "aggregate": [{"op": "count", "as": "count"}],
+              "groupby": ["Status"]
+            },
+            {
+              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
+            },
+            {
+              "calculate": "datum.count / datum.total * 100",
+              "as": "percentage"
+            },
+            {
+              "calculate": "format(round(datum.percentage), '.0f') + '%'",
+              "as": "pct_label"
+            },
+            {
+              "calculate": "'Long March 3B: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
+              "as": "tooltip_text"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {"type": "arc", "innerRadius": 50},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative"},
+                "color": {
+                  "field": "Status",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": ["Success", "Failure"],
+                    "range": ["#2ca02c", "#d62728"]
+                  },
+                  "legend": null
+                },
+                "tooltip": {"field": "tooltip_text", "type": "nominal", "title": null}
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 70},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage >= 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 95},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#111"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage < 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 13,
+                "fontWeight": "bold",
+                "color": "#111"
+              },
+              "encoding": {
+                "x": {"value": 100},
+                "y": {"value": 100},
+                "text": {"value": "Long March 3B"}
+              }
+            }
+          ]
+        }
+      ],
+      "spacing": 30
+    },
+    {
+      "hconcat": [
+        {
+          "width": 200,
+          "height": 200,
+          "data": {
+            "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
+          },
+          "transform": [
+            {
+              "filter": "datum['Launch Vehicle'] == 'H-IIA'"
+            },
+            {
+              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
+              "as": "Status"
+            },
+            {
+              "aggregate": [{"op": "count", "as": "count"}],
+              "groupby": ["Status"]
+            },
+            {
+              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
+            },
+            {
+              "calculate": "datum.count / datum.total * 100",
+              "as": "percentage"
+            },
+            {
+              "calculate": "format(round(datum.percentage), '.0f') + '%'",
+              "as": "pct_label"
+            },
+            {
+              "calculate": "'H-IIA: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
+              "as": "tooltip_text"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {"type": "arc", "innerRadius": 50},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative"},
+                "color": {
+                  "field": "Status",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": ["Success", "Failure"],
+                    "range": ["#2ca02c", "#d62728"]
+                  },
+                  "legend": null
+                },
+                "tooltip": {"field": "tooltip_text", "type": "nominal", "title": null}
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 70},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage >= 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 75},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage < 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 13,
+                "fontWeight": "bold",
+                "color": "#111"
+              },
+              "encoding": {
+                "x": {"value": 100},
+                "y": {"value": 100},
+                "text": {"value": "H-IIA"}
+              }
+            }
+          ]
+        },
+        {
+          "width": 200,
+          "height": 200,
+          "data": {
+            "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
+          },
+          "transform": [
+            {
+              "filter": "datum['Launch Vehicle'] == 'Atlas-Centaur'"
+            },
+            {
+              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
+              "as": "Status"
+            },
+            {
+              "aggregate": [{"op": "count", "as": "count"}],
+              "groupby": ["Status"]
+            },
+            {
+              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
+            },
+            {
+              "calculate": "datum.count / datum.total * 100",
+              "as": "percentage"
+            },
+            {
+              "calculate": "format(round(datum.percentage), '.0f') + '%'",
+              "as": "pct_label"
+            },
+            {
+              "calculate": "'Atlas-Centaur: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
+              "as": "tooltip_text"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {"type": "arc", "innerRadius": 50},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative"},
+                "color": {
+                  "field": "Status",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": ["Success", "Failure"],
+                    "range": ["#2ca02c", "#d62728"]
+                  },
+                  "legend": null
+                },
+                "tooltip": {"field": "tooltip_text", "type": "nominal", "title": null}
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 70},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage >= 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 75},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage < 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 13,
+                "fontWeight": "bold",
+                "color": "#111"
+              },
+              "encoding": {
+                "x": {"value": 100},
+                "y": {"value": 100},
+                "text": {"value": "Atlas-Centaur"}
+              }
+            }
+          ]
+        },
+        {
+          "width": 200,
+          "height": 200,
+          "data": {
+            "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
+          },
+          "transform": [
+            {
+              "filter": "datum['Launch Vehicle'] == 'Long March 2F'"
+            },
+            {
+              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
+              "as": "Status"
+            },
+            {
+              "aggregate": [{"op": "count", "as": "count"}],
+              "groupby": ["Status"]
+            },
+            {
+              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
+            },
+            {
+              "calculate": "datum.count / datum.total * 100",
+              "as": "percentage"
+            },
+            {
+              "calculate": "format(round(datum.percentage), '.0f') + '%'",
+              "as": "pct_label"
+            },
+            {
+              "calculate": "'Long March 2F: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
+              "as": "tooltip_text"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {"type": "arc", "innerRadius": 50},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative"},
+                "color": {
+                  "field": "Status",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": ["Success", "Failure"],
+                    "range": ["#2ca02c", "#d62728"]
+                  },
+                  "legend": null
+                },
+                "tooltip": {"field": "tooltip_text", "type": "nominal", "title": null}
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 70},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage >= 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {"type": "text", "fontWeight": "600", "fontSize": 14},
+              "encoding": {
+                "theta": {"field": "count", "type": "quantitative", "stack": "center"},
+                "radius": {"value": 75},
+                "text": {"field": "pct_label"},
+                "color": {"value": "#ffffff"},
+                "opacity": {
+                  "condition": {"test": "datum.percentage < 8", "value": 1},
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 13,
+                "fontWeight": "bold",
+                "color": "#111"
+              },
+              "encoding": {
+                "x": {"value": 100},
+                "y": {"value": 100},
+                "text": {"value": "Long March 2F"}
+              }
+            }
+          ]
+        }
+      ],
+      "spacing": 30
+    }
+  ],
+  "spacing": 30
+}
