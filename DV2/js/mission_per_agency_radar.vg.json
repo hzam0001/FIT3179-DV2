@@ -1,0 +1,293 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Radar chart showing mission type counts by space agency",
+  "width": 600,
+  "height": 550,
+  "padding": 120,
+  "autosize": {"type": "none", "contains": "padding"},
+  "title": {
+    "text": "Mission Types by Space Agency",
+    "anchor": "middle",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "offset": 20
+  },
+  "signals": [
+    {"name": "radius", "update": "min(width, height) / 1.8"}
+  ],
+  "data": [
+    {
+      "name": "source",
+      "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv",
+      "format": {"type": "csv"},
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum['Space Agency'] == 'NASA' || datum['Space Agency'] == 'ROSCOSMOS' || datum['Space Agency'] == 'CNSA' || datum['Space Agency'] == 'JAXA' || datum['Space Agency'] == 'ESA'"
+        },
+        {
+          "type": "filter",
+          "expr": "datum['Mission Type'] != null && datum['Mission Type'] != ''"
+        }
+      ]
+    },
+    {
+      "name": "top_mission_types",
+      "source": "source",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["Mission Type"],
+          "ops": ["count"],
+          "as": ["total_count"]
+        },
+        {
+          "type": "window",
+          "sort": {"field": "total_count", "order": "descending"},
+          "ops": ["row_number"],
+          "as": ["rank"]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.rank <= 6"
+        }
+      ]
+    },
+    {
+      "name": "aggregated",
+      "source": "source",
+      "transform": [
+        {
+          "type": "lookup",
+          "from": "top_mission_types",
+          "key": "Mission Type",
+          "fields": ["Mission Type"],
+          "as": ["matched"]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.matched != null"
+        },
+        {
+          "type": "aggregate",
+          "groupby": ["Space Agency", "Mission Type"],
+          "ops": ["count"],
+          "as": ["mission_count"]
+        }
+      ]
+    },
+    {
+      "name": "keys",
+      "source": "top_mission_types",
+      "transform": [
+        {
+          "type": "window",
+          "sort": {"field": "total_count", "order": "descending"},
+          "ops": ["row_number"],
+          "as": ["order"]
+        }
+      ]
+    },
+    {
+      "name": "radial-ticks",
+      "transform": [
+        {
+          "type": "sequence",
+          "start": 0,
+          "stop": {"signal": "ceil(domain('radial')[1])"},
+          "step": {"signal": "max(1, ceil(domain('radial')[1] / 5))"},
+          "as": "value"
+        },
+        {
+          "type": "filter",
+          "expr": "datum.value > 0"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "angular",
+      "type": "point",
+      "range": {"signal": "[-PI, PI]"},
+      "padding": 0.5,
+      "domain": {"data": "keys", "field": "Mission Type", "sort": {"field": "order"}}
+    },
+    {
+      "name": "radial",
+      "type": "sqrt",
+      "range": {"signal": "[0, radius]"},
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "aggregated", "field": "mission_count"}
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": ["NASA", "ROSCOSMOS", "CNSA", "JAXA", "ESA"],
+      "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "arc",
+      "name": "radial-circles",
+      "from": {"data": "radial-ticks"},
+      "zindex": 0,
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2"},
+          "startAngle": {"value": 0},
+          "endAngle": {"value": 6.283185307179586},
+          "innerRadius": {"scale": "radial", "field": "value"},
+          "outerRadius": {"scale": "radial", "field": "value"},
+          "stroke": {"value": "#e0e0e0"},
+          "strokeWidth": {"value": 1},
+          "fill": {"value": null}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "radial-labels",
+      "from": {"data": "radial-ticks"},
+      "zindex": 1,
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2 - scale('radial', datum.value) - 5"},
+          "text": {"field": "value"},
+          "align": {"value": "center"},
+          "baseline": {"value": "bottom"},
+          "fill": {"value": "#666"},
+          "fontSize": {"value": 10}
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "name": "radial-grid",
+      "from": {"data": "keys"},
+      "zindex": 0,
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2"},
+          "x2": {"signal": "width / 2 + radius * cos(scale('angular', datum['Mission Type']))"},
+          "y2": {"signal": "height / 2 + radius * sin(scale('angular', datum['Mission Type']))"},
+          "stroke": {"value": "#e0e0e0"},
+          "strokeWidth": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "key-label",
+      "from": {"data": "keys"},
+      "zindex": 2,
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2 + (radius + 30) * cos(scale('angular', datum['Mission Type']))"},
+          "y": {"signal": "height / 2 + (radius + 30) * sin(scale('angular', datum['Mission Type']))"},
+          "text": {"field": "Mission Type"},
+          "align": {
+            "signal": "abs(scale('angular', datum['Mission Type'])) < PI / 2 ? 'left' : 'right'"
+          },
+          "baseline": {"value": "middle"},
+          "fill": {"value": "#000"},
+          "fontSize": {"value": 13},
+          "fontWeight": {"value": "bold"}
+        }
+      }
+    },
+    {
+      "type": "group",
+      "name": "categories",
+      "zindex": 1,
+      "from": {
+        "facet": {"data": "aggregated", "name": "facet", "groupby": ["Space Agency"]}
+      },
+      "marks": [
+        {
+          "type": "line",
+          "name": "category-line",
+          "from": {"data": "facet"},
+          "encode": {
+            "enter": {
+              "interpolate": {"value": "linear-closed"},
+              "x": {"signal": "width / 2 + scale('radial', datum.mission_count) * cos(scale('angular', datum['Mission Type']))"},
+              "y": {"signal": "height / 2 + scale('radial', datum.mission_count) * sin(scale('angular', datum['Mission Type']))"},
+              "stroke": {"scale": "color", "field": {"parent": "Space Agency"}},
+              "strokeWidth": {"value": 2.5},
+              "fill": {"scale": "color", "field": {"parent": "Space Agency"}},
+              "fillOpacity": {"value": 0.2},
+              "strokeOpacity": {"value": 0.9}
+            },
+            "update": {
+              "strokeWidth": {"value": 2.5},
+              "strokeOpacity": {"value": 0.9}
+            },
+            "hover": {
+              "strokeWidth": {"value": 3.5},
+              "strokeOpacity": {"value": 1}
+            }
+          }
+        },
+        {
+          "type": "symbol",
+          "from": {"data": "facet"},
+          "encode": {
+            "enter": {
+              "x": {"signal": "width / 2 + scale('radial', datum.mission_count) * cos(scale('angular', datum['Mission Type']))"},
+              "y": {"signal": "height / 2 + scale('radial', datum.mission_count) * sin(scale('angular', datum['Mission Type']))"},
+              "fill": {"scale": "color", "field": {"parent": "Space Agency"}},
+              "stroke": {"value": "#fff"},
+              "strokeWidth": {"value": 1.5},
+              "size": {"value": 100},
+              "tooltip": {
+                "signal": "{'Space Agency': parent['Space Agency'], 'Mission Type': datum['Mission Type'], 'Mission Count': datum.mission_count}"
+              }
+            },
+            "update": {
+              "fillOpacity": {"value": 1},
+              "size": {"value": 100}
+            },
+            "hover": {
+              "fillOpacity": {"value": 1},
+              "size": {"value": 150}
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "title": "Space Agency",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "offset": 55,
+      "encode": {
+        "symbols": {
+          "enter": {
+            "fillOpacity": {"value": 0.9},
+            "size": {"value": 150}
+          }
+        },
+        "labels": {
+          "update": {
+            "fontSize": {"value": 12}
+          }
+        },
+        "title": {
+          "update": {
+            "fontSize": {"value": 14},
+            "fontWeight": {"value": "bold"}
+          }
+        }
+      }
+    }
+  ]
+}
