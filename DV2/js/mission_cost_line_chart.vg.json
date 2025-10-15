@@ -1,0 +1,228 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Mission cost over time by country (1957-2020)",
+  "background": "white",
+  "width": 800,
+  "height": 500,
+  "title": {
+    "text": "Space Mission Cost Over Time (1957-2020)",
+    "anchor": "middle",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "offset": 10
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/All_space_missions(2).csv"
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(datum.Year)",
+      "as": "YearNum"
+    },
+    {
+      "calculate": "toNumber(replace(replace(datum['Price(USDbillion)'], '$', ''), ',', ''))",
+      "as": "Price"
+    },
+    {
+      "filter": "datum.YearNum >= 1957 && datum.YearNum <= 2020"
+    },
+    {
+      "filter": "isValid(datum.Price) && datum.Price > 0"
+    },
+    {
+      "calculate": "trim(datum.Country)",
+      "as": "CountryClean"
+    },
+    {
+      "filter": "datum.CountryClean != 'Yellow Sea'"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Price",
+          "as": "TotalCost"
+        }
+      ],
+      "groupby": ["YearNum", "CountryClean"]
+    },
+    {
+      "calculate": "datum.CountryClean == 'USA' || datum.CountryClean == 'Russia' ? datum.CountryClean : 'Other'",
+      "as": "ColorGroup"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": {
+          "size": 40
+        },
+        "strokeWidth": 2,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "YearNum",
+          "type": "quantitative",
+          "title": "Year",
+          "scale": {
+            "domain": [1962, 2022]
+          },
+          "axis": {
+            "tickCount": 10,
+            "format": "d",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "TotalCost",
+          "type": "quantitative",
+          "title": "Total Mission Cost (USD Billions)",
+          "scale": {
+            "type": "log",
+            "domain": [1, 10000]
+          },
+          "axis": {
+            "grid": false,
+            "tickCount": 8
+          }
+        },
+        "color": {
+          "field": "ColorGroup",
+          "type": "nominal",
+          "scale": {
+            "domain": ["USA", "Russia", "Other"],
+            "range": ["#e74c3c", "#c0392b", "#95a5a6"]
+          },
+          "legend": null
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.ColorGroup == 'USA' || datum.ColorGroup == 'Russia'",
+            "value": 3.5
+          },
+          "value": 2.5
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.ColorGroup == 'USA' || datum.ColorGroup == 'Russia'",
+            "value": 1
+          },
+          "value": 0.7
+        },
+        "detail": {
+          "field": "CountryClean",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "CountryClean",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "YearNum",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "TotalCost",
+            "type": "quantitative",
+            "title": "Total Cost (USD Billions)",
+            "format": "$.2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 1991}
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "strokeDash": [8, 4],
+            "strokeWidth": 2,
+            "color": "#2c3e50"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "top",
+            "dx": 5,
+            "dy": 5,
+            "fontSize": 11,
+            "fontWeight": "bold",
+            "color": "#2c3e50"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "quantitative"
+            },
+            "y": {
+              "value": 10
+            },
+            "text": {
+              "value": "End of Cold War (1991)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {"country": "USA", "color": "#e74c3c"},
+          {"country": "Russia", "color": "#c0392b"}
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "opacity": 0
+      },
+      "encoding": {
+        "x": {
+          "value": 0
+        },
+        "y": {
+          "value": 0
+        },
+        "color": {
+          "field": "country",
+          "type": "nominal",
+          "scale": {
+            "domain": ["USA", "Russia"],
+            "range": ["#e74c3c", "#c0392b"]
+          },
+          "legend": {
+            "title": "Major Space Powers",
+            "orient": "right"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 13
+    }
+  }
+}
