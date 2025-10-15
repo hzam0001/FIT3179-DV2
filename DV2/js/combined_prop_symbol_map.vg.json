@@ -1,7 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Cold War Vs Post Cold War Missile Launches Globally ",
-  "width": 900,
+  "background": "transparent",
+  "title": {
+    "text": "Cold War Vs Post Cold War Missile Launches Globally",
+    "color": "white",
+    "fontSize": 16,
+    "anchor": "middle"
+  },
+  "width": 1100,
   "height": 500,
   "params": [
     {
@@ -17,8 +23,12 @@
   ],
   "hconcat": [
     {
-      "title": "1957 - 1991",
-      "width": 450,
+      "title": {
+        "text": "1957 - 1991",
+        "color": "white",
+        "fontSize": 17
+      },
+      "width": 500,
       "height": 400,
       "projection": {
         "type": "equalEarth"
@@ -30,7 +40,7 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "#cfeeff"
+            "fill": "#1a1a2e"
           }
         },
         {
@@ -43,9 +53,9 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "darkgray",
-            "stroke": "white",
-            "strokeWidth": 0.5
+            "fill": "#2d2d44",
+            "stroke": "#4da6ff",
+            "strokeWidth": 0.8
           }
         },
         {
@@ -59,7 +69,7 @@
           "mark": {
             "type": "geoshape",
             "fill": null,
-            "stroke": "lightgray",
+            "stroke": "rgba(77, 166, 255, 0.3)",
             "strokeWidth": 0.6
           }
         },
@@ -85,10 +95,10 @@
           ],
           "mark": {
             "type": "circle",
-            "opacity": 0.8,
-            "stroke": "white",
-            "strokeWidth": 1,
-            "color": "red"
+            "opacity": 0.75,
+            "stroke": "#ffffff",
+            "strokeWidth": 1.5,
+            "color": "#ff6b6b"
           },
           "encoding": {
             "longitude": {
@@ -110,7 +120,9 @@
                 "nice": false
               },
               "legend": {
-                "values": [10, 100, 500, 1200]
+                "values": [10, 100, 500, 1200],
+                "titleColor": "white",
+                "labelColor": "white"
               }
             },
             "tooltip": [
@@ -122,8 +134,12 @@
       ]
     },
     {
-      "title": "1992 - 2020",
-      "width": 450,
+      "title": {
+        "text": "1992 - 2020",
+        "color": "white",
+        "fontSize": 17
+      },
+      "width": 500,
       "height": 400,
       "projection": {
         "type": "equalEarth"
@@ -135,7 +151,7 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "#cfeeff"
+            "fill": "#1a1a2e"
           }
         },
         {
@@ -148,9 +164,9 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "darkgray",
-            "stroke": "white",
-            "strokeWidth": 0.5
+            "fill": "#2d2d44",
+            "stroke": "#4da6ff",
+            "strokeWidth": 0.8
           }
         },
         {
@@ -164,7 +180,7 @@
           "mark": {
             "type": "geoshape",
             "fill": null,
-            "stroke": "lightgray",
+            "stroke": "rgba(77, 166, 255, 0.3)",
             "strokeWidth": 0.6
           }
         },
@@ -190,10 +206,10 @@
           ],
           "mark": {
             "type": "circle",
-            "opacity": 0.8,
-            "stroke": "white",
-            "strokeWidth": 1,
-            "color": "red"
+            "opacity": 0.75,
+            "stroke": "#ffffff",
+            "strokeWidth": 1.5,
+            "color": "#ff6b6b"
           },
           "encoding": {
             "longitude": {
@@ -215,7 +231,9 @@
                 "nice": false
               },
               "legend": {
-                "values": [10, 100, 500, 1200]
+                "values": [10, 100, 500, 1200],
+                "titleColor": "white",
+                "labelColor": "white"
               }
             },
             "tooltip": [
@@ -235,6 +253,14 @@
   "config": {
     "view": {
       "stroke": "transparent"
+    },
+    "background": "transparent",
+    "title": {
+      "color": "white"
+    },
+    "legend": {
+      "titleColor": "white",
+      "labelColor": "white"
     }
   }
-} 
+}
