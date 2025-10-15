@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evolution of Space Exploration</title>
+
+  <!-- Vega libs -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+
+  <!-- Your styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="main-title">Evolution of Space exploration</h1>
+      <p class="subtitle">Changes in intensity, strategic priorities, and development of the space race over the past six decades</p>
+
+      <!-- stats row: 66 / 36 / 4323 in one line -->
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-number">66</div>
+          <div class="stat-label">years of space exploration</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">36</div>
+          <div class="stat-label">countries involved in space exploration</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4323</div>
+          <div class="stat-label">total space missions</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Section title -->
+    <section class="section-title">
+      <h2>Evolution and globalisation of space exploration over time</h2>
+    </section>
+
+    <!-- Full-width launch_per_year chart -->
+    <div id="launch_per_year" class="vis full-width vis-pad"></div>
+
+    <!-- two-column row: left chart (50%) and right text (50%) -->
+    <div class="two-col-row">
+      <div class="col col-left vis-pad">
+        <div id="launch_per_country_dual_axis" class="vis"></div>
+      </div>
+
+      <div class="col col-right text-box vis-pad">
+        <p>
+          In the years after World War II, governments assumed a leading role in the support of research that increased fundamental knowledge about nature, a role that earlier had been played by universities, private foundations, and other nongovernmental supporters. This change came for two reasons. First, the need for complex equipment to carry out many scientific experiments and for the large teams of researchers to use that equipment led to costs that only governments could afford. Second, governments were willing to take on this responsibility because of the belief that fundamental research would produce new knowledge essential to the health, the security, and the quality of life of their citizens. Thus, when scientists sought government support for early space experiments, it was forthcoming. Since the start of space efforts in the United States, the Soviet Union, and Europe, national governments have given high priority to the support of science done in and from space. From modest beginnings, space science has expanded under government support to include multibillion-dollar exploratory missions in the solar system. Examples of such efforts include the development of the Curiosity Mars rover, the Cassini-Huygens mission to Saturn and its moons, and the development of major space-based astronomical observatories such as the Hubble Space Telescope.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer / credits -->
+    <footer class="footer">
+      <p>Visualisation created by hiba — data: All_space_missions.csv</p>
+    </footer>
+
+  </div> <!-- /.page -->
+
+  <!-- Embed the two Vega-Lite specs (adjust paths if needed) -->
+  <script>
+    // Use renderer: 'svg' so SVG elements' styles can be overridden by CSS.
+    const embedOpts = { actions: false, renderer: 'svg' };
+
+    // Adjust these paths if used raw GitHub URLs or different folder layout
+    vegaEmbed('#launch_per_year', 'js/launch_per_year.vg.json', embedOpts).catch(console.error);
+    vegaEmbed('#launch_per_country_dual_axis', 'js/launch_per_country_dual_axis.vg.json', embedOpts).catch(console.error);
+  </script>
+
+</body>
+</html>

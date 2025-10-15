@@ -1,0 +1,203 @@
+/* Basic reset and box model */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevent horizontal scroll */
+  background-color: #000; /* fallback if image not found */
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+}
+
+/* Page container */
+.page {
+  max-width: 1200px; /* keep page narrow to avoid horizontal scroll */
+  margin: 24px auto;
+  padding: 20px;
+  background: rgba(
+    0,
+    0,
+    0,
+    0
+  ); /* transparent so background image shows through */
+}
+
+/* Full-page background image (use relative path or raw GitHub URL) */
+body {
+  /* If you use GitHub raw URL, replace the local path with raw URL */
+  background-image: url("../data/space_background.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.main-title {
+  font-size: 28px;
+  margin: 6px 0;
+  color: #ffffff;
+}
+.subtitle {
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  color: #ddd;
+}
+
+/* Stats row: three blocks inline */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  margin: 12px 0 28px 0;
+  flex-wrap: nowrap;
+}
+.stat {
+  text-align: center;
+  min-width: 160px;
+}
+.stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 6px;
+  color: #fff;
+}
+.stat-label {
+  font-size: 12px;
+  color: #eee;
+}
+
+/* Section title */
+.section-title {
+  text-align: left;
+  margin: 18px 0;
+  color: #fff;
+}
+.section-title h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* Visualization containers */
+.vis {
+  width: 100%;
+  height: 420px;
+  position: relative;
+}
+.full-width {
+  width: 100%;
+  max-width: 100%;
+}
+.vis-pad {
+  padding: 14px;
+}
+
+/* Two-column layout: left (chart) and right (text) each 50% */
+.two-col-row {
+  display: flex;
+  gap: 25px;
+  align-items: stretch; /* keep same height */
+  margin-top: -50px;
+}
+.col {
+  flex: 1 1 0;
+  min-width: 0;
+} /* min-width:0 avoids overflow in flex children */
+.col-left {
+  /* left chart column - shift left to align with top chart */
+  margin-left: -110px; /* adjust this value to align the y-axis */
+}
+.col-right {
+  /* right text column */
+  margin-left: 85px; /* push text box to the right */
+  max-width: 400px; /* make text box narrower */
+}
+
+.text-box {
+  background: rgba(0, 0, 0, 0.35); /* slight panel to improve readability */
+  padding: 18px;
+  border-radius: 6px;
+  color: #f5f5f5;
+  line-height: 1.45;
+  font-size: 13px;
+}
+
+.text-box p {
+  max-width: 55ch; /* Controls line length - adjust as needed */
+  margin-bottom: 12px;
+}
+
+.text-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Make chart containers use transparent background and not clip axes */
+.vega-embed {
+  background: transparent !important;
+  overflow: visible !important; /* allow axis/ticks to show */
+}
+
+/* SVG fixes: remove Vega-Lite white background rectangle (if present) */
+.vega-embed svg rect.background {
+  fill: transparent !important;
+  stroke: none !important;
+}
+
+/* Make all text inside chart white so it shows on dark background */
+.vega-embed svg text,
+.vega-embed svg tspan {
+  fill: white !important;
+  stroke: none !important;
+}
+
+/* Tweak axes label color via CSS also (in case Vega draws axes groups) */
+.vega-embed .axis text,
+.vega-embed .axis-label {
+  fill: white !important;
+}
+
+/* Tooltip box override (Vega's tooltip is often HTML) */
+.vega-tooltip {
+  background: rgba(0, 0, 0, 0.85) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 24px;
+  color: #ddd;
+  font-size: 12px;
+}
+
+/* Responsive behavior on small screens */
+@media (max-width: 900px) {
+  .two-col-row {
+    flex-direction: column;
+  }
+  .col-left {
+    margin-left: 0; /* reset alignment on mobile */
+  }
+  .stats-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .stat {
+    min-width: 120px;
+  }
+  .vis {
+    height: 360px;
+  }
+}
