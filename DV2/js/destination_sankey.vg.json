@@ -1,0 +1,236 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Sankey-style diagram showing space missions from agencies to destinations",
+  "width": 800,
+  "height": 500,
+  "padding": 5,
+  "title": {
+    "text": "Space Agency Missions by Destination",
+    "anchor": "middle",
+    "fontSize": 20,
+    "fontWeight": "bold"
+  },
+  "data": [
+    {
+      "name": "rawData",
+      "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv",
+      "format": {"type": "csv"},
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "(datum['Space Agency'] == 'NASA' || datum['Space Agency'] == 'ROSCOSMOS' || datum['Space Agency'] == 'CNSA' || datum['Space Agency'] == 'JAXA' || datum['Space Agency'] == 'ESA') && (datum['Destination'] == 'LEO' || datum['Destination'] == 'venus' || datum['Destination'] == 'mars' || datum['Destination'] == 'mercury' || datum['Destination'] == 'moon' || datum['Destination'] == 'sun' || datum['Destination'] == 'GEO' || datum['Destination'] == 'Earth Orbit' || datum['Destination'] == 'Earth orbit')"
+        },
+        {
+          "type": "formula",
+          "as": "dest_norm",
+          "expr": "lower(trim(datum.Destination)) == 'earth orbit' ? 'Earth Orbit' : datum.Destination"
+        },
+        {
+          "type": "formula",
+          "as": "Destination",
+          "expr": "datum.dest_norm"
+        }
+      ]
+    },
+    {
+      "name": "links",
+      "source": "rawData",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["Space Agency", "Destination"],
+          "ops": ["count"],
+          "as": ["missions"]
+        }
+      ]
+    },
+    {
+      "name": "agencies",
+      "source": "links",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["Space Agency"],
+          "ops": ["sum"],
+          "fields": ["missions"],
+          "as": ["total"]
+        },
+        {
+          "type": "stack",
+          "groupby": [],
+          "field": "total",
+          "sort": {"field": "Space Agency"},
+          "as": ["y0", "y1"]
+        },
+        {
+          "type": "formula",
+          "as": "x",
+          "expr": "100"
+        }
+      ]
+    },
+    {
+      "name": "destinations",
+      "source": "links",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["Destination"],
+          "ops": ["sum"],
+          "fields": ["missions"],
+          "as": ["total"]
+        },
+        {
+          "type": "stack",
+          "groupby": [],
+          "field": "total",
+          "sort": {"field": "Destination"},
+          "as": ["y0", "y1"]
+        },
+        {
+          "type": "formula",
+          "as": "x",
+          "expr": "width - 100"
+        }
+      ]
+    },
+    {
+      "name": "flows",
+      "source": "links",
+      "transform": [
+        {
+          "type": "lookup",
+          "from": "agencies",
+          "key": "Space Agency",
+          "fields": ["Space Agency"],
+          "as": ["source_node"]
+        },
+        {
+          "type": "lookup",
+          "from": "destinations",
+          "key": "Destination",
+          "fields": ["Destination"],
+          "as": ["target_node"]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "agencyColor",
+      "type": "ordinal",
+      "domain": ["NASA", "ROSCOSMOS", "CNSA", "JAXA", "ESA"],
+      "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+    },
+    {
+      "name": "destinationColor",
+      "type": "ordinal",
+      "domain": ["LEO", "venus", "mars", "mercury", "moon", "sun", "GEO", "Earth Orbit", "Earth orbit"],
+      "range": ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9"]
+    },
+    {
+      "name": "yScale",
+      "type": "linear",
+      "domain": {"data": "agencies", "fields": ["y0", "y1"]},
+      "range": [50, {"signal": "height - 50"}]
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "from": {"data": "flows"},
+      "encode": {
+        "update": {
+          "stroke": {"scale": "agencyColor", "field": "Space Agency"},
+          "strokeWidth": {"signal": "max(1, datum.missions * 2)"},
+          "strokeOpacity": {"value": 0.4},
+          "path": {
+            "signal": "'M' + datum.source_node.x + ',' + (scale('yScale', datum.source_node.y0) + scale('yScale', datum.source_node.y1))/2 + ' C' + (datum.source_node.x + (datum.target_node.x - datum.source_node.x)/2) + ',' + (scale('yScale', datum.source_node.y0) + scale('yScale', datum.source_node.y1))/2 + ' ' + (datum.source_node.x + (datum.target_node.x - datum.source_node.x)/2) + ',' + (scale('yScale', datum.target_node.y0) + scale('yScale', datum.target_node.y1))/2 + ' ' + datum.target_node.x + ',' + (scale('yScale', datum.target_node.y0) + scale('yScale', datum.target_node.y1))/2"
+          },
+          "tooltip": {
+            "signal": "{'From': datum['Space Agency'], 'To': datum['Destination'], 'Missions': datum.missions}"
+          }
+        },
+        "hover": {
+          "strokeOpacity": {"value": 0.7}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {"data": "agencies"},
+      "encode": {
+        "update": {
+          "x": {"field": "x"},
+          "width": {"value": 20},
+          "y": {"scale": "yScale", "field": "y0"},
+          "y2": {"scale": "yScale", "field": "y1"},
+          "fill": {"scale": "agencyColor", "field": "Space Agency"},
+          "fillOpacity": {"value": 0.9},
+          "stroke": {"value": "#fff"},
+          "strokeWidth": {"value": 2},
+          "tooltip": {
+            "signal": "{'Space Agency': datum['Space Agency'], 'Total Missions': datum.total}"
+          }
+        },
+        "hover": {
+          "fillOpacity": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {"data": "destinations"},
+      "encode": {
+        "update": {
+          "x": {"field": "x"},
+          "width": {"value": 20},
+          "y": {"scale": "yScale", "field": "y0"},
+          "y2": {"scale": "yScale", "field": "y1"},
+          "fill": {"scale": "destinationColor", "field": "Destination"},
+          "fillOpacity": {"value": 0.9},
+          "stroke": {"value": "#fff"},
+          "strokeWidth": {"value": 2},
+          "tooltip": {
+            "signal": "{'Destination': datum['Destination'], 'Total Missions': datum.total}"
+          }
+        },
+        "hover": {
+          "fillOpacity": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "agencies"},
+      "encode": {
+        "update": {
+          "x": {"signal": "datum.x - 10"},
+          "y": {"signal": "(scale('yScale', datum.y0) + scale('yScale', datum.y1)) / 2"},
+          "align": {"value": "right"},
+          "baseline": {"value": "middle"},
+          "text": {"field": "Space Agency"},
+          "fontSize": {"value": 13},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "#333"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "destinations"},
+      "encode": {
+        "update": {
+          "x": {"signal": "datum.x + 30"},
+          "y": {"signal": "(scale('yScale', datum.y0) + scale('yScale', datum.y1)) / 2"},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"},
+          "text": {"field": "Destination"},
+          "fontSize": {"value": 13},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "#333"}
+        }
+      }
+    }
+  ]
+}
