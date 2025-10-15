@@ -1,14 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
   "title": {
     "text": "How Has the Number of Countries Involved in Space Exploration Varied? (1957–2020)",
     "anchor": "middle",
-    "fontSize": 16
+    "fontSize": 16,
+    "color": "white"
   },
   "hconcat": [
     {
-      "width": 1000,
-      "height": 800,
+      "width": 550,
+      "height": 400,
       "data": {
         "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/All_space_missions(2).csv"
       },
@@ -37,18 +39,29 @@
               "field": "YearNum",
               "type": "quantitative",
               "title": "Year",
-              "axis": { "format": "d", "tickCount": 14, "grid": false},
+              "axis": { 
+                "format": "d", 
+                "tickCount": 14, 
+                "grid": false,
+                "labelColor": "white",
+                "titleColor": "white",
+                "domainColor": "white",
+                "tickColor": "white"
+              },
               "scale": { "domain": [1957, 2020] }
             },
             "y": {
               "field": "Country",
               "type": "nominal",
-              "title": "Country",
+              "title": null,
               "axis": {
                 "labelLimit": 260,
                 "labelFontSize": 12,
                 "grid": false,
-                "ticks": false
+                "ticks": false,
+                "labelColor": "white",
+                "titleColor": "white",
+                "domainColor": "white"
               },
               "sort": { "field": "total_count", "order": "descending" }
             },
@@ -79,14 +92,15 @@
 
     {
       "width": 100,
-      "height": 800,
+      "height": 700,
       "title": {
         "text": "Number of Missions",
         "align": "left",
         "fontSize": 12,
         "fontWeight": "normal",
         "offset": 0,
-        "anchor": "start"
+        "anchor": "start",
+        "color": "white"
       },
       "data": {
         "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/All_space_missions.csv"
@@ -108,7 +122,7 @@
         "dx": 5,
         "fontSize": 12,
         "fontWeight": 600,
-        "color": "#111"
+        "color": "white"
       },
       "encoding": {
         "y": {
@@ -120,7 +134,7 @@
             "ticks": false,
             "title": null,
             "domain": true,
-            "domainColor": "#333",
+            "domainColor": "white",
             "domainWidth": 1
           },
           "sort": { "field": "total_count", "order": "descending" }
@@ -137,7 +151,16 @@
 
   "config": {
     "view": { "stroke": "transparent" },
-    "axis": { "domain": true, "domainColor": "#333", "domainWidth": 1 },
-    "title": { "anchor": "middle" }
+    "background": "transparent",
+    "axis": { 
+      "domain": true, 
+      "domainColor": "white", 
+      "domainWidth": 1,
+      "labelColor": "white",
+      "titleColor": "white",
+      "tickColor": "white",
+      "gridColor": "rgba(255, 255, 255, 0.2)"
+    },
+    "title": { "anchor": "middle", "color": "white" }
   }
 }
