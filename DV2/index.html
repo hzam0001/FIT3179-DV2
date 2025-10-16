@@ -76,16 +76,23 @@
 
     <!-- two-column row: left chart (50%) and right text (50%) -->
     <div class="two-col-row bar-chart-row">
-      <div class="col col-left-bar vis-pad">
-        <div id="success_rate_bar_chart" class="vis"></div>
+      <div class="col col-charts-stacked vis-pad">
+        <!-- Success rate bar chart -->
+        <div id="success_rate_bar_chart" class="vis-small"></div>
+        
+        <!-- Mission cost line chart -->
+        <div id="mission_cost_line_chart" class="vis-small" style="margin-top: 30px;"></div>
       </div>
 
-      <div class="col col-right text-box vis-pad">
+      <div class="col col-right-tall text-box vis-pad">
         <p>
           The success rates of space missions vary significantly across countries, reflecting their experience, technological capabilities, and investment in space programs. The United States and Russia (including the Soviet Union) have launched the most missions, with both countries achieving success rates above 90%. This demonstrates the maturity and reliability of their space programs developed over decades of continuous operation.
         </p>
         <p>
           China has shown remarkable improvement in recent years, with a high success rate that reflects its growing expertise in space technology. Countries like France, Japan, and India have also demonstrated strong capabilities with consistent success rates, while smaller programs in Kazakhstan and Australia represent emerging or specialized space activities.
+        </p>
+        <p>
+          Space mission costs have evolved dramatically over the decades, with the Cold War era seeing massive investments from the USA and Russia. The logarithmic scale reveals how mission costs vary by orders of magnitude, from relatively modest launches to multi-billion dollar programs. The end of the Cold War in 1991 marked a significant shift in spending patterns, with a broader distribution of space activities across multiple nations and a diversification of mission types and objectives.
         </p>
       </div>
     </div>
@@ -106,6 +113,7 @@
     vegaEmbed('#launch_per_country_dual_axis', 'js/launch_per_country_dual_axis.vg.json', embedOpts).catch(console.error);
     vegaEmbed('#combined_prop_symbol_map', 'js/combined_prop_symbol_map.vg.json', embedOpts).catch(console.error);
     vegaEmbed('#success_rate_bar_chart', 'js/success_rate_bar_chart.vg.json', embedOpts).catch(console.error);
+    vegaEmbed('#mission_cost_line_chart', 'js/mission_cost_line_chart.vg.json', embedOpts).catch(console.error);
   </script>
 
 </body>

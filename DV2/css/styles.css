@@ -95,6 +95,12 @@ body {
   position: relative;
   overflow: visible !important;
 }
+.vis-small {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: visible !important;
+}
 .full-width {
   width: 100%;
   max-width: 100%;
@@ -130,10 +136,21 @@ body {
   margin-left: 0;
   overflow: visible !important;
 }
+.col-charts-stacked {
+  /* stacked charts column */
+  margin-left: 0;
+  overflow: visible !important;
+}
 .col-right {
   /* right text column */
   margin-left: 85px; /* push text box to the right */
   max-width: 400px; /* make text box narrower */
+}
+.col-right-tall {
+  /* right text column for stacked charts */
+  margin-left: 85px;
+  max-width: 400px;
+  min-height: 430px; /* matches combined height of both charts */
 }
 
 .text-box {
@@ -232,6 +249,13 @@ body {
   }
   .col-left-bar {
     margin-left: 0;
+  }
+  .col-charts-stacked {
+    margin-left: 0;
+  }
+  .col-right-tall {
+    margin-left: 0;
+    min-height: auto;
   }
   .stats-row {
     flex-wrap: wrap;
