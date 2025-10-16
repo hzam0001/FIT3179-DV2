@@ -11,8 +11,8 @@
     "offset": 20,
     "color": "white"
   },
-  "width": 550,
-  "height": 400,
+  "width": 600,
+  "height": 200,
   "data": { 
     "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/total_missions.csv" 
   },
@@ -100,16 +100,6 @@
       "scale": {
         "domain": ["Success", "Failure"],
         "range": ["#10b981", "#ef4444"]
-      },
-      "legend": {
-        "title": "Mission Status",
-        "titleFontSize": 12,
-        "titleFontWeight": 500,
-        "labelFontSize": 11,
-        "orient": "bottom-right",
-        "direction": "horizontal",
-        "titleColor": "white",
-        "labelColor": "white"
       }
     },
     "tooltip": [

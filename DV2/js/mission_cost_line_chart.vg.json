@@ -1,15 +1,16 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Mission cost over time by country (1957-2020)",
-  "background": "white",
-  "width": 800,
-  "height": 500,
+  "background": "transparent",
+  "width": 620,
+  "height": 200,
   "title": {
     "text": "Space Mission Cost Over Time (1957-2020)",
     "anchor": "middle",
     "fontSize": 18,
     "fontWeight": "bold",
-    "offset": 10
+    "offset": 10,
+    "color": "white"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/All_space_missions(2).csv"
@@ -72,7 +73,11 @@
           "axis": {
             "tickCount": 10,
             "format": "d",
-            "grid": false
+            "grid": false,
+            "labelColor": "white",
+            "titleColor": "white",
+            "domainColor": "white",
+            "tickColor": "white"
           }
         },
         "y": {
@@ -85,7 +90,11 @@
           },
           "axis": {
             "grid": false,
-            "tickCount": 8
+            "tickCount": 8,
+            "labelColor": "white",
+            "titleColor": "white",
+            "domainColor": "white",
+            "tickColor": "white"
           }
         },
         "color": {
@@ -148,7 +157,7 @@
             "type": "rule",
             "strokeDash": [8, 4],
             "strokeWidth": 2,
-            "color": "#2c3e50"
+            "color": "#4da6ff"
           },
           "encoding": {
             "x": {
@@ -163,10 +172,10 @@
             "align": "left",
             "baseline": "top",
             "dx": 5,
-            "dy": 5,
+            "dy": 155,
             "fontSize": 11,
             "fontWeight": "bold",
-            "color": "#2c3e50"
+            "color": "white"
           },
           "encoding": {
             "x": {
@@ -210,7 +219,9 @@
           },
           "legend": {
             "title": "Major Space Powers",
-            "orient": "right"
+            "orient": "right",
+            "titleColor": "white",
+            "labelColor": "white"
           }
         }
       }
@@ -222,7 +233,9 @@
     },
     "axis": {
       "labelFontSize": 11,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "labelColor": "white",
+      "titleColor": "white"
     }
   }
 }
