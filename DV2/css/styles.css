@@ -93,6 +93,7 @@ body {
   width: 100%;
   height: 420px;
   position: relative;
+  overflow: visible !important;
 }
 .full-width {
   width: 100%;
@@ -109,6 +110,13 @@ body {
   align-items: stretch; /* keep same height */
   margin-top: -50px;
 }
+
+/* Special handling for bar chart row */
+.two-col-row.bar-chart-row {
+  margin-top: 18px;
+  align-items: flex-start;
+}
+
 .col {
   flex: 1 1 0;
   min-width: 0;
@@ -116,6 +124,11 @@ body {
 .col-left {
   /* left chart column - shift left to align with top chart */
   margin-left: -110px; /* adjust this value to align the y-axis */
+}
+.col-left-bar {
+  /* bar chart column - no shift needed */
+  margin-left: 0;
+  overflow: visible !important;
 }
 .col-right {
   /* right text column */
@@ -145,6 +158,11 @@ body {
 .vega-embed {
   background: transparent !important;
   overflow: visible !important; /* allow axis/ticks to show */
+}
+
+.vega-embed canvas,
+.vega-embed svg {
+  overflow: visible !important;
 }
 
 /* SVG fixes: remove Vega-Lite white background rectangle (if present) */
@@ -211,6 +229,9 @@ body {
   }
   .col-left {
     margin-left: 0; /* reset alignment on mobile */
+  }
+  .col-left-bar {
+    margin-left: 0;
   }
   .stats-row {
     flex-wrap: wrap;

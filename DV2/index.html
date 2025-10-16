@@ -6,9 +6,9 @@
   <title>Evolution of Space Exploration</title>
 
   <!-- Vega libs -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.28.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.25.0"></script>
 
   <!-- Pure.css -->
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
@@ -72,6 +72,24 @@
     <!-- Full-width map chart -->
     <div id="combined_prop_symbol_map" class="vis full-width vis-pad"></div>
 
+    
+
+    <!-- two-column row: left chart (50%) and right text (50%) -->
+    <div class="two-col-row bar-chart-row">
+      <div class="col col-left-bar vis-pad">
+        <div id="success_rate_bar_chart" class="vis"></div>
+      </div>
+
+      <div class="col col-right text-box vis-pad">
+        <p>
+          The success rates of space missions vary significantly across countries, reflecting their experience, technological capabilities, and investment in space programs. The United States and Russia (including the Soviet Union) have launched the most missions, with both countries achieving success rates above 90%. This demonstrates the maturity and reliability of their space programs developed over decades of continuous operation.
+        </p>
+        <p>
+          China has shown remarkable improvement in recent years, with a high success rate that reflects its growing expertise in space technology. Countries like France, Japan, and India have also demonstrated strong capabilities with consistent success rates, while smaller programs in Kazakhstan and Australia represent emerging or specialized space activities.
+        </p>
+      </div>
+    </div>
+
     <!-- Footer / credits -->
     <footer class="footer">
       <p>Visualisation created by hiba — data: All_space_missions.csv</p>
@@ -87,6 +105,7 @@
     vegaEmbed('#launch_per_year', 'js/launch_per_year.vg.json', embedOpts).catch(console.error);
     vegaEmbed('#launch_per_country_dual_axis', 'js/launch_per_country_dual_axis.vg.json', embedOpts).catch(console.error);
     vegaEmbed('#combined_prop_symbol_map', 'js/combined_prop_symbol_map.vg.json', embedOpts).catch(console.error);
+    vegaEmbed('#success_rate_bar_chart', 'js/success_rate_bar_chart.vg.json', embedOpts).catch(console.error);
   </script>
 
 </body>
