@@ -1,17 +1,17 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Horizontal grouped bar chart showing Success vs Failure rates (1957-2020) for selected countries",
   "background": "transparent",
   "config": { "view": { "stroke": "transparent" } },
   "title": {
     "text": "Mission success and failure rates from 1957 to 2020",
     "anchor": "middle",
-    "fontSize": 18,
+    "fontSize": 17,
     "fontWeight": "bold",
     "offset": 20,
     "color": "white"
   },
-  "width": 600,
+  "width": 550,
   "height": 400,
   "data": { 
     "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/total_missions.csv" 
@@ -51,7 +51,8 @@
   ],
   "mark": {
     "type": "bar",
-    "cornerRadiusEnd": 3
+    "cornerRadiusEnd": 3,
+    "width": {"band": 0.4}
   },
   "encoding": {
     "y": {
@@ -64,12 +65,14 @@
         "labelFontWeight": 500,
         "labelColor": "white",
         "domainColor": "white",
-        "tickColor": "white"
+        "tickColor": "white",
+        "grid": false
       }
     },
     "yOffset": {
       "field": "Status",
-      "type": "nominal"
+      "type": "nominal",
+      "scale": {"paddingInner": 0.3}
     },
     "x": {
       "field": "percentage",
@@ -79,13 +82,13 @@
         "labelFontSize": 11,
         "titleFontSize": 12,
         "titleFontWeight": 500,
-        "grid": true,
         "gridOpacity": 0.3,
         "labelColor": "white",
         "titleColor": "white",
         "domainColor": "white",
         "tickColor": "white",
-        "gridColor": "rgba(255, 255, 255, 0.2)"
+        "grid":false
+        
       },
       "scale": {
         "domain": [0, 100]
@@ -96,7 +99,7 @@
       "type": "nominal",
       "scale": {
         "domain": ["Success", "Failure"],
-        "range": ["#2ca02c", "#d62728"]
+        "range": ["#10b981", "#ef4444"]
       },
       "legend": {
         "title": "Mission Status",
@@ -104,7 +107,9 @@
         "titleFontWeight": 500,
         "labelFontSize": 11,
         "orient": "bottom-right",
-        "direction": "horizontal"
+        "direction": "horizontal",
+        "titleColor": "white",
+        "labelColor": "white"
       }
     },
     "tooltip": [
