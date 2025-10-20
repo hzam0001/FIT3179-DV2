@@ -2,10 +2,25 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 900,
   "height": 600,
+  "background": "transparent",
   "title": {
     "text": "Launch Vehicle Performance: Success Rate vs Mission Count",
+    "dy": -20,
     "fontSize": 16,
-    "anchor": "middle"
+    "anchor": "middle",
+    "color": "white"
+  },
+  "config": {
+    "axis": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "tickColor": "white",
+      "domainColor": "white"
+    },
+    "legend": {
+      "labelColor": "white",
+      "titleColor": "white"
+    }
   },
   "data": {
     "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
@@ -31,7 +46,8 @@
     {
       "aggregate": [
         { "op": "count", "as": "Mission_Count" },
-        { "op": "mean", "field": "Outcome", "as": "Success_Mean" }
+        { "op": "mean", "field": "Outcome", "as": "Success_Mean" },
+        { "op": "sum", "field": "Outcome", "as": "Successful_Launches" }
       ],
       "groupby": ["Launch Vehicle", "Space Agency"]
     },
@@ -47,7 +63,7 @@
         { "op": "rank", "as": "rank" }
       ],
       "sort": [
-        { "field": "Mission_Count", "order": "descending" }
+        { "field": "Successful_Launches", "order": "descending" }
       ]
     }
   ],
@@ -70,6 +86,7 @@
       { "field": "Launch Vehicle", "type": "nominal", "title": "Launch Vehicle" },
       { "field": "Space Agency", "type": "nominal", "title": "Space Agency" },
       { "field": "Mission_Count", "type": "quantitative", "title": "Mission Count", "format": "," },
+      { "field": "Successful_Launches", "type": "quantitative", "title": "Successful Launches", "format": "," },
       { "field": "Success_Rate", "type": "quantitative", "title": "Success Rate (%)", "format": ".1f" }
     ]
   },
@@ -82,7 +99,7 @@
         "strokeWidth": 0.6
       },
       "encoding": {
-        "size": { "value": 350 },
+        "size": { "value": 700 },
         "color": {
           "field": "Launch Vehicle",
           "type": "nominal",
@@ -126,12 +143,12 @@
         "text": { "field": "Launch Vehicle", "type": "nominal" },
         "opacity": {
           "condition": {
-            "test": "datum.rank <= 10 || datum.Mission_Count >= 20 || datum.Success_Rate < 50",
+            "test": "datum.rank <= 6",
             "value": 1
           },
           "value": 0
         },
-        "color": { "value": "black" }
+        "color": { "value": "white" }
       }
     }
   ]
