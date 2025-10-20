@@ -8,6 +8,7 @@
   <!-- Vega libs -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.28.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.00.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.25.0"></script>
 
   <!-- Pure.css -->
@@ -23,7 +24,7 @@
 
     <!-- Header -->
     <header class="header">
-      <h1 class="main-title">Evolution of Space exploration</h1>
+      <h1 class="main-title">Evolution of Space Exploration</h1>
       <p class="subtitle">Changes in Intensity, Strategic Priorities, and Development of the Space Race Over the Past Six Decades</p>
 
       <!-- stats row: 66 / 36 / 4323 in one line -->
@@ -103,6 +104,33 @@
       </div>
     </div>
 
+    <!-- Section: Launch Vehicle Performance -->
+    <section class="section-title">
+      <h2>Technological Advancement of Launch Vehicles</h2>
+    </section>
+
+    <!-- Full-width vehicle launch scatter plot -->
+    <div id="vehicle_launch_scatter_plot" class="vis-vehicle-scatter vis-pad"></div>
+
+    <!-- two-column row: left donut chart (50%) and right text (50%) -->
+    <div class="two-col-row donut-chart-row">
+      <div class="col col-left-donut vis-pad">
+        <div id="top6_rocket_success_donut_chart" class="vis-donut"></div>
+      </div>
+
+      <div class="col col-right-donut text-box vis-pad">
+        <p>
+          The success rates of the top six most-used launch vehicles demonstrate the remarkable reliability achieved in modern spaceflight. These rockets represent decades of engineering refinement and operational experience, with each having launched numerous missions throughout their service life.
+        </p>
+        <p>
+          Among the most frequently used launch vehicles, success rates generally exceed 90%, reflecting the stringent testing, quality control, and continuous improvement processes employed by space agencies and commercial operators. The slight variations in success rates often correlate with the rocket's age, complexity, and the types of missions undertaken.
+        </p>
+        <p>
+          Older, proven designs like the Soyuz family have demonstrated exceptional reliability through thousands of launches, while newer vehicles show how modern engineering and manufacturing techniques have enabled high success rates even early in their operational history. The donut chart visualization makes it easy to compare the performance of these workhorse vehicles that form the backbone of global space access.
+        </p>
+      </div>
+    </div>
+
     <!-- Footer / credits -->
     <footer class="footer">
       <p>Visualisation created by hiba — data: All_space_missions.csv</p>
@@ -120,6 +148,8 @@
     vegaEmbed('#combined_prop_symbol_map', 'js/combined_prop_symbol_map.vg.json', embedOpts).catch(console.error);
     vegaEmbed('#success_rate_bar_chart', 'js/success_rate_bar_chart.vg.json', embedOpts).catch(console.error);
     vegaEmbed('#mission_cost_line_chart', 'js/mission_cost_line_chart.vg.json', embedOpts).catch(console.error);
+    vegaEmbed('#vehicle_launch_scatter_plot', 'js/vehicle_launch_scatter_plot.vg.json', embedOpts).catch(console.error);
+    vegaEmbed('#top6_rocket_success_donut_chart', 'js/top6_rocket_success_donut_chart.vg.json', embedOpts).catch(console.error);
   </script>
 
 </body>
