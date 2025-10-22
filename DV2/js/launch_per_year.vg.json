@@ -4,8 +4,8 @@
   "height": 200,
   "background": "transparent",
   "title": {
-    "text": "Total Launches per Year (1957 - 2021)",
-    "fontSize": 16,
+    "text": "Total Launches per Year",
+    "fontSize": 20,
     "anchor": "middle",
     "color": "white"
   },
@@ -41,7 +41,7 @@
             "domainColor": "white",
             "tickColor": "white"
           },
-          "scale": { "domain": [1957, 2021] }
+          "scale": { "domain": [1952, 2021] }
         },
         "y": {
           "field": "Launches",

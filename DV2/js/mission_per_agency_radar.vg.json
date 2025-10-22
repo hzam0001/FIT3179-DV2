@@ -1,19 +1,24 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Radar chart showing mission type counts by space agency",
-  "width": 600,
-  "height": 550,
-  "padding": 120,
+  "width": 1100,
+  "height": 600,
+  "padding": 50,
   "autosize": {"type": "none", "contains": "padding"},
+  "background": "transparent",
   "title": {
     "text": "Mission Types by Space Agency",
-    "anchor": "middle",
-    "fontSize": 18,
+    "anchor": "start",
+    "fontSize": 20,
     "fontWeight": "bold",
-    "offset": 20
+    "offset": 20,
+    "color": "white",
+    "dx": 200
   },
   "signals": [
-    {"name": "radius", "update": "min(width, height) / 1.8"}
+    {"name": "radius", "update": "min(width, height) / 1.8"},
+    {"name": "centerX", "update": "width / 2 - 150"},
+    {"name": "centerY", "update": "height / 2"}
   ],
   "data": [
     {
@@ -125,7 +130,7 @@
       "name": "color",
       "type": "ordinal",
       "domain": ["NASA", "ROSCOSMOS", "CNSA", "JAXA", "ESA"],
-      "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+      "range": ["#427B95", "#7798AB", "#DCBF67", "#E8DCB9", "#F2CEE6"]
     }
   ],
   "marks": [
@@ -136,13 +141,13 @@
       "zindex": 0,
       "encode": {
         "enter": {
-          "x": {"signal": "width / 2"},
+          "x": {"signal": "width / 2 - 150"},
           "y": {"signal": "height / 2"},
           "startAngle": {"value": 0},
           "endAngle": {"value": 6.283185307179586},
           "innerRadius": {"scale": "radial", "field": "value"},
           "outerRadius": {"scale": "radial", "field": "value"},
-          "stroke": {"value": "#e0e0e0"},
+          "stroke": {"value": "rgba(255, 255, 255, 0.3)"},
           "strokeWidth": {"value": 1},
           "fill": {"value": null}
         }
@@ -155,12 +160,12 @@
       "zindex": 1,
       "encode": {
         "enter": {
-          "x": {"signal": "width / 2"},
+          "x": {"signal": "width / 2 - 150"},
           "y": {"signal": "height / 2 - scale('radial', datum.value) - 5"},
           "text": {"field": "value"},
           "align": {"value": "center"},
           "baseline": {"value": "bottom"},
-          "fill": {"value": "#666"},
+          "fill": {"value": "white"},
           "fontSize": {"value": 10}
         }
       }
@@ -172,11 +177,11 @@
       "zindex": 0,
       "encode": {
         "enter": {
-          "x": {"signal": "width / 2"},
+          "x": {"signal": "width / 2 - 150"},
           "y": {"signal": "height / 2"},
-          "x2": {"signal": "width / 2 + radius * cos(scale('angular', datum['Mission Type']))"},
+          "x2": {"signal": "width / 2 - 150 + radius * cos(scale('angular', datum['Mission Type']))"},
           "y2": {"signal": "height / 2 + radius * sin(scale('angular', datum['Mission Type']))"},
-          "stroke": {"value": "#e0e0e0"},
+          "stroke": {"value": "rgba(255, 255, 255, 0.3)"},
           "strokeWidth": {"value": 1}
         }
       }
@@ -188,14 +193,14 @@
       "zindex": 2,
       "encode": {
         "enter": {
-          "x": {"signal": "width / 2 + (radius + 30) * cos(scale('angular', datum['Mission Type']))"},
+          "x": {"signal": "width / 2 - 150 + (radius + 30) * cos(scale('angular', datum['Mission Type']))"},
           "y": {"signal": "height / 2 + (radius + 30) * sin(scale('angular', datum['Mission Type']))"},
           "text": {"field": "Mission Type"},
           "align": {
             "signal": "abs(scale('angular', datum['Mission Type'])) < PI / 2 ? 'left' : 'right'"
           },
           "baseline": {"value": "middle"},
-          "fill": {"value": "#000"},
+          "fill": {"value": "white"},
           "fontSize": {"value": 13},
           "fontWeight": {"value": "bold"}
         }
@@ -216,7 +221,7 @@
           "encode": {
             "enter": {
               "interpolate": {"value": "linear-closed"},
-              "x": {"signal": "width / 2 + scale('radial', datum.mission_count) * cos(scale('angular', datum['Mission Type']))"},
+              "x": {"signal": "width / 2 - 150 + scale('radial', datum.mission_count) * cos(scale('angular', datum['Mission Type']))"},
               "y": {"signal": "height / 2 + scale('radial', datum.mission_count) * sin(scale('angular', datum['Mission Type']))"},
               "stroke": {"scale": "color", "field": {"parent": "Space Agency"}},
               "strokeWidth": {"value": 2.5},
@@ -239,7 +244,7 @@
           "from": {"data": "facet"},
           "encode": {
             "enter": {
-              "x": {"signal": "width / 2 + scale('radial', datum.mission_count) * cos(scale('angular', datum['Mission Type']))"},
+              "x": {"signal": "width / 2 - 150 + scale('radial', datum.mission_count) * cos(scale('angular', datum['Mission Type']))"},
               "y": {"signal": "height / 2 + scale('radial', datum.mission_count) * sin(scale('angular', datum['Mission Type']))"},
               "fill": {"scale": "color", "field": {"parent": "Space Agency"}},
               "stroke": {"value": "#fff"},
@@ -278,13 +283,15 @@
         },
         "labels": {
           "update": {
-            "fontSize": {"value": 12}
+            "fontSize": {"value": 12},
+            "fill": {"value": "white"}
           }
         },
         "title": {
           "update": {
             "fontSize": {"value": 14},
-            "fontWeight": {"value": "bold"}
+            "fontWeight": {"value": "bold"},
+            "fill": {"value": "white"}
           }
         }
       }

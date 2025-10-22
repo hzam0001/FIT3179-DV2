@@ -9,7 +9,7 @@ body {
   padding: 0;
   overflow-x: hidden; /* prevent horizontal scroll */
   background-color: #000; /* fallback if image not found */
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Gruppo", sans-serif; /* Default body font */
   color: #fff;
 }
 
@@ -42,12 +42,19 @@ body {
   margin-bottom: 14px;
 }
 .main-title {
-  font-size: 28px;
+  font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 45px; /* Largest - main heading */
   margin: 6px 0;
   color: #ffffff;
 }
 .subtitle {
-  font-size: 14px;
+  font-family: "Gruppo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px; /* Paragraph text size */
   margin: 0 0 12px 0;
   color: #ddd;
 }
@@ -58,7 +65,7 @@ body {
   justify-content: center;
   align-items: stretch;
   gap: 32px;
-  margin: 12px 0 28px 0;
+  margin: 35px 0 28px 0;
   flex-wrap: nowrap;
 }
 .stat {
@@ -66,26 +73,36 @@ body {
   min-width: 160px;
 }
 .stat-number {
-  font-size: 36px;
-  font-weight: 700;
+  font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 32px;
   line-height: 1;
   margin-bottom: 6px;
   color: #fff;
 }
 .stat-label {
-  font-size: 12px;
+  font-family: "Gruppo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px; /* Slightly smaller than paragraph */
   color: #eee;
 }
 
 /* Section title */
 .section-title {
   text-align: left;
-  margin: 18px 0;
+  margin: 100px 0 10px 0;
   color: #fff;
 }
 .section-title h2 {
-  margin: 0;
-  font-size: 18px;
+  font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin: 50;
+  font-size: 30px; /* Section headings */
 }
 
 /* Visualization containers */
@@ -100,6 +117,7 @@ body {
   height: 200px;
   position: relative;
   overflow: visible !important;
+  margin-left: 20;
 }
 .full-width {
   width: 100%;
@@ -125,6 +143,49 @@ body {
   height: 200px;
   position: relative;
   overflow: visible !important;
+  margin-left: -20px;
+}
+
+/* Sankey diagram - full width centered */
+.vis-sankey {
+  width: 1300px;
+  height: 500px;
+  position: relative;
+  overflow: visible !important;
+  margin: 0 auto;
+  margin-left: -250px;
+  margin-top: -30px;
+}
+
+.vis-sankey .vega-embed {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.vis-sankey .vega-embed > div {
+  margin: 0 auto;
+}
+
+/* Radar chart - half width for two-column layout */
+.vis-radar {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: visible !important;
+  margin-left: -70px;
+  margin-top: -15px;
+}
+
+/* Space Agency Analysis chart - full width centered */
+.vis-space-agency {
+  width: 1100px;
+  height: 500px;
+  position: relative;
+  overflow: visible !important;
+  margin: 0 auto;
+  margin-left: -50px; /* center the wider chart within page container */
+  margin-top: 70px;
 }
 
 /* Two-column layout: left (chart) and right (text) each 50% */
@@ -132,7 +193,8 @@ body {
   display: flex;
   gap: 25px;
   align-items: stretch; /* keep same height */
-  margin-top: -50px;
+  margin-top: -40px;
+  margin-bottom: 30px;
 }
 
 /* Special handling for bar chart row */
@@ -143,6 +205,12 @@ body {
 
 /* Donut chart row */
 .two-col-row.donut-chart-row {
+  margin-top: 18px;
+  align-items: flex-start;
+}
+
+/* Radar chart row */
+.two-col-row.radar-chart-row {
   margin-top: 18px;
   align-items: flex-start;
 }
@@ -165,21 +233,27 @@ body {
   margin-left: 0;
   overflow: visible !important;
 }
+.col-left-radar {
+  /* radar chart column */
+  margin-left: 0;
+  overflow: visible !important;
+}
 .col-charts-stacked {
   /* stacked charts column */
-  margin-left: 0;
+  margin-left: -10;
   overflow: visible !important;
 }
 .col-right {
   /* right text column */
   margin-left: 85px; /* push text box to the right */
   max-width: 400px; /* make text box narrower */
+  min-height: auto !important;
 }
 .col-right-tall {
   /* right text column for stacked charts */
   margin-left: 85px;
   max-width: 400px;
-  min-height: 430px; /* matches combined height of both charts */
+  min-height: auto; /* matches combined height of both charts */
 }
 .col-right-donut {
   /* right text column for donut chart */
@@ -187,23 +261,62 @@ body {
   max-width: 400px;
   min-height: 450px;
 }
+.col-right-radar {
+  /* right text column for radar chart */
+  margin-left: 85px;
+  max-width: 400px;
+  min-height: 600px;
+}
 
 .text-box {
   background: rgba(0, 0, 0, 0.35); /* slight panel to improve readability */
-  padding: 18px;
+  padding: 16px;
   border-radius: 6px;
   color: #f5f5f5;
   line-height: 1.45;
-  font-size: 13px;
+  font-family: "Gruppo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px; /* Paragraph text */
+  min-height: auto !important;
 }
 
 .text-box p {
   max-width: 55ch; /* Controls line length - adjust as needed */
-  margin-bottom: 12px;
+  margin-bottom: 5px;
 }
 
 .text-box p:last-child {
-  margin-bottom: 0;
+  margin-bottom: -5px;
+}
+
+/* Three-column text layout */
+.three-col-text-row {
+  display: flex;
+  gap: 25px;
+  align-items: stretch;
+  margin: 30px 0;
+  justify-content: center;
+}
+
+.text-box-small {
+  flex: 1 1 0;
+  max-width: 350px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 18px;
+  border-radius: 6px;
+  color: #f5f5f5;
+  line-height: 1.45;
+  font-family: "Gruppo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px; /* Paragraph text */
+}
+
+.text-box-small p {
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Make chart containers use transparent background and not clip axes */
@@ -230,6 +343,22 @@ body {
   stroke: none !important;
 }
 
+/* Override chart fonts using CSS - Gruppo for all chart text */
+.vega-embed svg text {
+  font-family: "Gruppo", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+/* Chart titles use Libre Bodoni */
+.vega-embed svg g[aria-label="Title"] text,
+.vega-embed svg .mark-text.role-title text {
+  font-family: "Libre Bodoni", serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+}
+
 /* Tweak axes label color via CSS also (in case Vega draws axes groups) */
 .vega-embed .axis text,
 .vega-embed .axis-label {
@@ -242,6 +371,9 @@ body {
   color: #fff !important;
   border: 0 !important;
   box-shadow: none !important;
+  font-family: "Gruppo", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
 }
 
 /* Footer */
@@ -249,16 +381,24 @@ body {
   text-align: center;
   margin-top: 24px;
   color: #ddd;
-  font-size: 12px;
+  font-family: "Gruppo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
 }
 
 /* Vega parameter controls (dropdown) styling */
 .vega-bind {
   color: white !important;
+  font-family: "Gruppo", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
 }
 
 .vega-bind-name {
   color: white !important;
+  font-family: "Gruppo", sans-serif !important;
+  font-weight: 400 !important;
 }
 
 .vega-bind select {
@@ -267,11 +407,15 @@ body {
   border: 1px solid #4da6ff !important;
   padding: 5px;
   border-radius: 4px;
+  font-family: "Gruppo", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
 }
 
 .vega-bind select option {
   background: #1a1a2e !important;
   color: white !important;
+  font-family: "Gruppo", sans-serif !important;
 }
 
 /* Responsive behavior on small screens */
@@ -288,6 +432,9 @@ body {
   .col-left-donut {
     margin-left: 0;
   }
+  .col-left-radar {
+    margin-left: 0;
+  }
   .col-charts-stacked {
     margin-left: 0;
   }
@@ -296,6 +443,10 @@ body {
     min-height: auto;
   }
   .col-right-donut {
+    margin-left: 0;
+    min-height: auto;
+  }
+  .col-right-radar {
     margin-left: 0;
     min-height: auto;
   }
@@ -316,5 +467,34 @@ body {
   }
   .vis-donut {
     height: 400px;
+  }
+  .vis-sankey {
+    width: 100%;
+    height: 450px;
+    margin-left: 0;
+  }
+  .vis-radar {
+    height: 500px;
+  }
+  .vis-space-agency {
+    width: 100%;
+    height: 450px;
+    margin-left: 0;
+  }
+  .three-col-text-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .text-box-small {
+    max-width: 100%;
+  }
+  .text-box-small p {
+    max-width: 100%;
+  }
+  .main-title {
+    font-size: 32px;
+  }
+  .section-title h2 {
+    font-size: 22px;
   }
 }

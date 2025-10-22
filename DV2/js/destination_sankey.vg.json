@@ -1,14 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Sankey-style diagram showing space missions from agencies to destinations",
-  "width": 800,
-  "height": 500,
+  "width": 1250,
+  "height": 800,
+  "background": "transparent",
   "padding": 5,
   "title": {
     "text": "Space Agency Missions by Destination",
     "anchor": "middle",
     "fontSize": 20,
-    "fontWeight": "bold"
+    "fontWeight": "bold",
+    "color": "white",
+    "dy": 60
   },
   "data": [
     {
@@ -120,13 +123,13 @@
       "name": "agencyColor",
       "type": "ordinal",
       "domain": ["NASA", "ROSCOSMOS", "CNSA", "JAXA", "ESA"],
-      "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+      "range": ["#427B95", "#7798AB", "#DCBF67", "#E8DCB9", "#F2CEE6"]
     },
     {
       "name": "destinationColor",
       "type": "ordinal",
       "domain": ["LEO", "venus", "mars", "mercury", "moon", "sun", "GEO", "Earth Orbit", "Earth orbit"],
-      "range": ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9"]
+      "range": ["#474543", "#595858", "#7E7F83", "#D9C5B2", "#E6DCD3", "#6B4F21", "#F3F3F4", "#7F924A", "#7F924A"]
     },
     {
       "name": "yScale",
@@ -212,7 +215,7 @@
           "text": {"field": "Space Agency"},
           "fontSize": {"value": 13},
           "fontWeight": {"value": "bold"},
-          "fill": {"value": "#333"}
+          "fill": {"value": "white"}
         }
       }
     },
@@ -228,7 +231,7 @@
           "text": {"field": "Destination"},
           "fontSize": {"value": 13},
           "fontWeight": {"value": "bold"},
-          "fill": {"value": "#333"}
+          "fill": {"value": "white"}
         }
       }
     }

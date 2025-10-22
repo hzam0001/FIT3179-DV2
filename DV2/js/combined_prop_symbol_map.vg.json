@@ -2,10 +2,11 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
   "title": {
-    "text": "Cold War Vs Post Cold War Missile Launches Globally",
+    "text": "Missile Launches Globally",
     "color": "white",
-    "fontSize": 16,
-    "anchor": "middle"
+    "fontSize": 20,
+    "anchor": "middle",
+    "dx": -35
   },
   "width": 1100,
   "height": 500,
@@ -26,7 +27,8 @@
       "title": {
         "text": "1957 - 1991",
         "color": "white",
-        "fontSize": 17
+        "fontSize": 20,
+        "offset": -25 
       },
       "width": 500,
       "height": 400,
@@ -40,7 +42,7 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "#1a1a2e"
+            "fill": "#1a1a5b"
           }
         },
         {
@@ -116,7 +118,7 @@
               "scale": {
                 "type": "sqrt",
                 "domain": [1, 1400],
-                "range": [30, 1800],
+                "range": [1, 850],
                 "nice": false
               },
               "legend": {
@@ -137,7 +139,8 @@
       "title": {
         "text": "1992 - 2020",
         "color": "white",
-        "fontSize": 17
+        "fontSize": 20,
+        "offset": -25
       },
       "width": 500,
       "height": 400,
@@ -151,7 +154,7 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "#1a1a2e"
+            "fill": "#1a1a5b"
           }
         },
         {

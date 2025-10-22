@@ -2,12 +2,12 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Mission cost over time by country (1957-2020)",
   "background": "transparent",
-  "width": 620,
+  "width": 570,
   "height": 200,
   "title": {
     "text": "Space Mission Cost Over Time (1957-2020)",
     "anchor": "middle",
-    "fontSize": 18,
+    "fontSize": 20,
     "fontWeight": "bold",
     "offset": 10,
     "color": "white"

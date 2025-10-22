@@ -1,13 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Space Agency Launch Analysis with interactive filter",
-  "background": "white",
+  "background": "transparent",
   "title": {
     "text": "Space Agency Launch Analysis (1957-2020)",
     "anchor": "middle",
     "fontSize": 20,
     "fontWeight": "bold",
-    "offset": 20
+    "offset": 20,
+    "color": "white"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
@@ -25,63 +26,107 @@
     }
   ],
   "transform": [
-    { "filter": "datum['Space Agency'] == agency_selection" },
-    { "calculate": "toNumber(datum.year)", "as": "year_num" },
-    { "filter": "datum.year_num >= 1957 && datum.year_num <= 2020" },
-    { "calculate": "trim(datum.Destination)", "as": "dest_trimmed" },
-    { "calculate": "lower(datum.dest_trimmed)", "as": "dest_lower" },
+    {
+      "filter": "datum['Space Agency'] == agency_selection"
+    },
+    {
+      "calculate": "toNumber(datum.year)",
+      "as": "year_num"
+    },
+    {
+      "filter": "datum.year_num >= 1957 && datum.year_num <= 2020"
+    },
+    {
+      "calculate": "trim(datum.Destination)",
+      "as": "dest_trimmed"
+    },
+    {
+      "calculate": "lower(datum.dest_trimmed)",
+      "as": "dest_lower"
+    },
     {
       "calculate": "datum.dest_lower == 'earth orbit' ? 'earth orbit' : (datum.dest_lower == 'jupyter' ? 'jupiter' : datum.dest_lower)",
       "as": "dest_fixed"
     },
     {
-      "calculate": "datum.dest_fixed == 'leo' ? 'LEO' : (datum.dest_fixed == 'geo' ? 'GEO' : (datum.dest_fixed == 'meo' ? 'MEO' : (datum.dest_fixed == 'iss' ? 'ISS' : (datum.dest_fixed == 'l1' ? 'L1' : (datum.dest_fixed == 'l2' ? 'L2' : (upper(substring(datum.dest_fixed, 0, 1)) + substring(datum.dest_fixed, 1)))))))",
+      "calculate": "datum.dest_fixed == 'leo' ? 'LEO' : datum.dest_fixed == 'geo' ? 'GEO' : datum.dest_fixed == 'meo' ? 'MEO' : datum.dest_fixed == 'iss' ? 'ISS' : datum.dest_fixed == 'l1' ? 'L1' : datum.dest_fixed == 'l2' ? 'L2' : (upper(substring(datum.dest_fixed, 0, 1)) + substring(datum.dest_fixed, 1))",
       "as": "Destination_final"
-    }
+   }
+
   ],
   "vconcat": [
     {
       "hconcat": [
         {
-          "width": 500,
+          "width": 550,
           "height": 400,
+          "background": "transparent",
           "title": {
             "text": "Number of Launches by Destination",
-            "fontSize": 16,
-            "fontWeight": "bold"
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "color": "white"
           },
           "transform": [
-            { "aggregate": [{ "op": "count", "as": "launch_count" }], "groupby": ["Destination_final"] },
-            { "window": [{ "op": "rank", "as": "rank" }], "sort": [{ "field": "launch_count", "order": "descending" }] },
-            { "filter": "datum.rank <= 10" }
+            {
+              "aggregate": [{ "op": "count", "as": "launch_count" }],
+              "groupby": ["Destination_final"]
+            },
+            {
+              "window": [{ "op": "rank", "as": "rank" }],
+              "sort": [{ "field": "launch_count", "order": "descending" }]
+            },
+            {
+              "filter": "datum.rank <= 10"
+            }
           ],
           "layer": [
             {
-              "mark": { "type": "rule", "size": 2 },
+              "mark": {
+                "type": "rule",
+                "size": 2
+              },
               "encoding": {
                 "x": {
                   "field": "Destination_final",
                   "type": "nominal",
                   "title": "Destination",
-                  "axis": { "labelAngle": -45, "labelFontSize": 11, "grid": false },
+                  "axis": {
+                    "labelAngle": -45,
+                    "labelFontSize": 11,
+                    "grid": false,
+                    "labelColor": "white",
+                    "titleColor": "white"
+                  },
                   "sort": "-y"
                 },
                 "y": {
                   "field": "launch_count",
                   "type": "quantitative",
                   "title": "Number of Launches",
-                  "scale": { "zero": true },
-                  "axis": { "grid": false }
+                  "scale": {
+                    "zero": true
+                  },
+                  "axis": {
+                    "grid": false,
+                    "labelColor": "white",
+                    "titleColor": "white"
+                  }
                 },
                 "color": {
                   "field": "Destination_final",
                   "type": "nominal",
-                  "legend": { "title": "Destination", "orient": "bottom", "columns": 5, "labelLimit": 150 }
+                  "legend": {
+                    "title": "Destination",
+                    "orient": "bottom",
+                    "columns": 5,
+                    "labelLimit": 150,
+                    "titleColor": "white",
+                    "labelColor": "white"
+                  }
                 }
               }
             },
-
-            
             {
               "mark": {
                 "type": "image",
@@ -89,68 +134,150 @@
                 "height": 40
               },
               "encoding": {
-                "x": { "field": "Destination_final", "type": "nominal", "sort": "-y" },
-                "y": { "field": "launch_count", "type": "quantitative", "axis": { "grid": false } },
+                "x": {
+                  "field": "Destination_final",
+                  "type": "nominal",
+                  "sort": "-y"
+                },
+                "y": {
+                  "field": "launch_count",
+                  "type": "quantitative",
+                  "axis": {
+                    "grid": false
+                  }
+                },
                 "url": {
-                  "value": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='28' viewBox='0 0 28 28'><g fill='none' fill-rule='evenodd'><path d='M14 2 C16 6 17 10 14 14 C11 10 12 6 14 2 Z' fill='%237a7a7a'/><rect x='13' y='14' width='2' height='5' rx='0.4' fill='%237a7a7a'/><polygon points='14,18 10.5,24 14,22 17.5,24' fill='%237a7a7a'/><circle cx='14' cy='6' r='1.3' fill='%23e6f3ff' stroke='%23999999' stroke-width='0.2'/></g></svg>"
+                  "value": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='28' viewBox='0 0 28 28'><g fill='none' fill-rule='evenodd'><path d='M14 2 C16 6 17 10 14 14 C11 10 12 6 14 2 Z' fill='%23ffffff'/><rect x='13' y='14' width='2' height='5' rx='0.4' fill='%23ffffff'/><polygon points='14,18 10.5,24 14,22 17.5,24' fill='%23ffffff'/><circle cx='14' cy='6' r='1.3' fill='%23e6f3ff' stroke='%23ffffff' stroke-width='0.2'/></g></svg>"
                 },
                 "tooltip": [
-                  { "field": "Destination_final", "type": "nominal", "title": "Destination" },
-                  { "field": "launch_count", "type": "quantitative", "title": "Number of Launches" }
+                  {
+                    "field": "Destination_final",
+                    "type": "nominal",
+                    "title": "Destination"
+                  },
+                  {
+                    "field": "launch_count",
+                    "type": "quantitative",
+                    "title": "Number of Launches"
+                  }
                 ],
-                "color": { "field": "Destination_final", "type": "nominal", "legend": null }
+                "color": {
+                  "field": "Destination_final",
+                  "type": "nominal",
+                  "legend": null
+                }
               }
             }
           ]
         },
         {
-          "width": 500,
+          "width": 550,
           "height": 400,
+          "background": "transparent",
           "title": {
             "text": "Successful Launches Over Time",
-            "fontSize": 16,
-            "fontWeight": "bold"
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "color": "white"
           },
           "layer": [
             {
               "transform": [
-                { "filter": "datum.Outcome == '1'" },
-                { "aggregate": [{ "op": "count", "as": "successful_launches" }], "groupby": ["year_num"] }
+                {
+                  "filter": "datum.Outcome == '1'"
+                },
+                {
+                  "aggregate": [{ "op": "count", "as": "successful_launches" }],
+                  "groupby": ["year_num"]
+                }
               ],
-              "mark": { "type": "line", "point": true, "strokeWidth": 2.5, "color": "#1f77b4" },
+              "mark": {
+                "type": "line",
+                "point": true,
+                "strokeWidth": 2.5,
+                "color": "#1f77b4"
+              },
               "encoding": {
                 "x": {
                   "field": "year_num",
                   "type": "quantitative",
                   "title": "Year",
-                  "axis": { "format": "d", "tickCount": 10, "grid": false }
+                  "axis": {
+                    "format": "d",
+                    "tickCount": 10,
+                    "grid": false,
+                    "labelColor": "white",
+                    "titleColor": "white"
+                  }
                 },
                 "y": {
                   "field": "successful_launches",
                   "type": "quantitative",
                   "title": "Successful Launches",
-                  "scale": { "zero": true },
-                  "axis": { "grid": false }
+                  "scale": {
+                    "zero": true
+                  },
+                  "axis": {
+                    "grid": false,
+                    "labelColor": "white",
+                    "titleColor": "white"
+                  }
                 },
                 "tooltip": [
-                  { "field": "year_num", "type": "quantitative", "title": "Year", "format": "d" },
-                  { "field": "successful_launches", "type": "quantitative", "title": "Successful Launches" }
+                  {
+                    "field": "year_num",
+                    "type": "quantitative",
+                    "title": "Year",
+                    "format": "d"
+                  },
+                  {
+                    "field": "successful_launches",
+                    "type": "quantitative",
+                    "title": "Successful Launches"
+                  }
                 ]
               }
             },
             {
-              "data": { "values": [{ "year": 1991 }] },
+              "data": {
+                "values": [{ "year": 1991 }]
+              },
               "layer": [
                 {
-                  "mark": { "type": "rule", "strokeDash": [8, 4], "strokeWidth": 2, "color": "#e74c3c" },
-                  "encoding": { "x": { "field": "year", "type": "quantitative" } }
+                  "mark": {
+                    "type": "rule",
+                    "strokeDash": [8, 4],
+                    "strokeWidth": 2,
+                    "color": "#e74c3c"
+                  },
+                  "encoding": {
+                    "x": {
+                      "field": "year",
+                      "type": "quantitative"
+                    }
+                  }
                 },
                 {
-                  "mark": { "type": "text", "align": "left", "dx": 5, "dy": -5, "fontSize": 11, "fontWeight": "bold", "color": "#e74c3c" },
+                  "mark": {
+                    "type": "text",
+                    "align": "left",
+                    "dx": 5,
+                    "dy": -5,
+                    "fontSize": 11,
+                    "fontWeight": "bold",
+                    "color": "#e74c3c"
+                  },
                   "encoding": {
-                    "x": { "field": "year", "type": "quantitative" },
-                    "y": { "value": 10 },
-                    "text": { "value": "End of Cold War (1991)" }
+                    "x": {
+                      "field": "year",
+                      "type": "quantitative"
+                    },
+                    "y": {
+                      "value": 10
+                    },
+                    "text": {
+                      "value": "End of Cold War (1991)"
+                    }
                   }
                 }
               ]
@@ -161,5 +288,9 @@
       "spacing": 40
     }
   ],
-  "config": { "view": { "stroke": "transparent" } }
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  }
 }

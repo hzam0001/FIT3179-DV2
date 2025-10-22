@@ -2,13 +2,11 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Success and failure rates for top 6 rockets",
   "background": "transparent",
-  "config": {
-    "view": {"stroke": "transparent"}
-  },
+  "config": { "view": {"stroke": "transparent"} },
   "title": {
     "text": "Top 6 Highest Used Rockets Success and Failure Rates",
     "anchor": "middle",
-    "fontSize": 18,
+    "fontSize": 20,
     "fontWeight": "bold",
     "offset": 20,
     "color": "white"
@@ -23,32 +21,13 @@
             "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
           },
           "transform": [
-            {
-              "filter": "datum['Launch Vehicle'] == 'Soyuz U'"
-            },
-            {
-              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
-              "as": "Status"
-            },
-            {
-              "aggregate": [{"op": "count", "as": "count"}],
-              "groupby": ["Status"]
-            },
-            {
-              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
-            },
-            {
-              "calculate": "datum.count / datum.total * 100",
-              "as": "percentage"
-            },
-            {
-              "calculate": "format(round(datum.percentage), '.0f') + '%'",
-              "as": "pct_label"
-            },
-            {
-              "calculate": "'Soyuz U: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
-              "as": "tooltip_text"
-            }
+            { "filter": "datum['Launch Vehicle'] == 'Soyuz U'" },
+            { "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'", "as": "Status" },
+            { "aggregate": [{"op": "count", "as": "count"}], "groupby": ["Status"] },
+            { "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}] },
+            { "calculate": "datum.count / datum.total * 100", "as": "percentage" },
+            { "calculate": "format(round(datum.percentage), '.0f') + '%'", "as": "pct_label" },
+            { "calculate": "'Soyuz U: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'", "as": "tooltip_text" }
           ],
           "layer": [
             {
@@ -60,7 +39,7 @@
                   "type": "nominal",
                   "scale": {
                     "domain": ["Success", "Failure"],
-                    "range": ["#2ca02c", "#d62728"]
+                    "range": ["#3B7691", "#D17A40"]
                   },
                   "legend": null
                 },
@@ -117,32 +96,13 @@
             "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
           },
           "transform": [
-            {
-              "filter": "datum['Launch Vehicle'] == 'Juno II'"
-            },
-            {
-              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
-              "as": "Status"
-            },
-            {
-              "aggregate": [{"op": "count", "as": "count"}],
-              "groupby": ["Status"]
-            },
-            {
-              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
-            },
-            {
-              "calculate": "datum.count / datum.total * 100",
-              "as": "percentage"
-            },
-            {
-              "calculate": "format(round(datum.percentage), '.0f') + '%'",
-              "as": "pct_label"
-            },
-            {
-              "calculate": "'Juno II: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
-              "as": "tooltip_text"
-            }
+            { "filter": "datum['Launch Vehicle'] == 'Juno II'" },
+            { "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'", "as": "Status" },
+            { "aggregate": [{"op": "count", "as": "count"}], "groupby": ["Status"] },
+            { "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}] },
+            { "calculate": "datum.count / datum.total * 100", "as": "percentage" },
+            { "calculate": "format(round(datum.percentage), '.0f') + '%'", "as": "pct_label" },
+            { "calculate": "'Juno II: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'", "as": "tooltip_text" }
           ],
           "layer": [
             {
@@ -154,7 +114,7 @@
                   "type": "nominal",
                   "scale": {
                     "domain": ["Success", "Failure"],
-                    "range": ["#2ca02c", "#d62728"]
+                    "range": ["#3B7691", "#D17A40"]
                   },
                   "legend": null
                 },
@@ -211,32 +171,13 @@
             "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
           },
           "transform": [
-            {
-              "filter": "datum['Launch Vehicle'] == 'Long March 3B'"
-            },
-            {
-              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
-              "as": "Status"
-            },
-            {
-              "aggregate": [{"op": "count", "as": "count"}],
-              "groupby": ["Status"]
-            },
-            {
-              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
-            },
-            {
-              "calculate": "datum.count / datum.total * 100",
-              "as": "percentage"
-            },
-            {
-              "calculate": "format(round(datum.percentage), '.0f') + '%'",
-              "as": "pct_label"
-            },
-            {
-              "calculate": "'Long March 3B: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
-              "as": "tooltip_text"
-            }
+            { "filter": "datum['Launch Vehicle'] == 'Long March 3B'" },
+            { "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'", "as": "Status" },
+            { "aggregate": [{"op": "count", "as": "count"}], "groupby": ["Status"] },
+            { "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}] },
+            { "calculate": "datum.count / datum.total * 100", "as": "percentage" },
+            { "calculate": "format(round(datum.percentage), '.0f') + '%'", "as": "pct_label" },
+            { "calculate": "'Long March 3B: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'", "as": "tooltip_text" }
           ],
           "layer": [
             {
@@ -248,7 +189,7 @@
                   "type": "nominal",
                   "scale": {
                     "domain": ["Success", "Failure"],
-                    "range": ["#2ca02c", "#d62728"]
+                    "range": ["#3B7691", "#D17A40"]
                   },
                   "legend": null
                 },
@@ -310,32 +251,13 @@
             "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
           },
           "transform": [
-            {
-              "filter": "datum['Launch Vehicle'] == 'H-IIA'"
-            },
-            {
-              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
-              "as": "Status"
-            },
-            {
-              "aggregate": [{"op": "count", "as": "count"}],
-              "groupby": ["Status"]
-            },
-            {
-              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
-            },
-            {
-              "calculate": "datum.count / datum.total * 100",
-              "as": "percentage"
-            },
-            {
-              "calculate": "format(round(datum.percentage), '.0f') + '%'",
-              "as": "pct_label"
-            },
-            {
-              "calculate": "'H-IIA: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
-              "as": "tooltip_text"
-            }
+            { "filter": "datum['Launch Vehicle'] == 'H-IIA'" },
+            { "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'", "as": "Status" },
+            { "aggregate": [{"op": "count", "as": "count"}], "groupby": ["Status"] },
+            { "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}] },
+            { "calculate": "datum.count / datum.total * 100", "as": "percentage" },
+            { "calculate": "format(round(datum.percentage), '.0f') + '%'", "as": "pct_label" },
+            { "calculate": "'H-IIA: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'", "as": "tooltip_text" }
           ],
           "layer": [
             {
@@ -347,7 +269,7 @@
                   "type": "nominal",
                   "scale": {
                     "domain": ["Success", "Failure"],
-                    "range": ["#2ca02c", "#d62728"]
+                    "range": ["#3B7691", "#D17A40"]
                   },
                   "legend": null
                 },
@@ -404,32 +326,13 @@
             "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
           },
           "transform": [
-            {
-              "filter": "datum['Launch Vehicle'] == 'Atlas-Centaur'"
-            },
-            {
-              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
-              "as": "Status"
-            },
-            {
-              "aggregate": [{"op": "count", "as": "count"}],
-              "groupby": ["Status"]
-            },
-            {
-              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
-            },
-            {
-              "calculate": "datum.count / datum.total * 100",
-              "as": "percentage"
-            },
-            {
-              "calculate": "format(round(datum.percentage), '.0f') + '%'",
-              "as": "pct_label"
-            },
-            {
-              "calculate": "'Atlas-Centaur: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
-              "as": "tooltip_text"
-            }
+            { "filter": "datum['Launch Vehicle'] == 'Atlas-Centaur'" },
+            { "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'", "as": "Status" },
+            { "aggregate": [{"op": "count", "as": "count"}], "groupby": ["Status"] },
+            { "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}] },
+            { "calculate": "datum.count / datum.total * 100", "as": "percentage" },
+            { "calculate": "format(round(datum.percentage), '.0f') + '%'", "as": "pct_label" },
+            { "calculate": "'Atlas-Centaur: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'", "as": "tooltip_text" }
           ],
           "layer": [
             {
@@ -441,7 +344,7 @@
                   "type": "nominal",
                   "scale": {
                     "domain": ["Success", "Failure"],
-                    "range": ["#2ca02c", "#d62728"]
+                    "range": ["#3B7691", "#D17A40"]
                   },
                   "legend": null
                 },
@@ -498,32 +401,13 @@
             "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/Success%20Rate%20of%20Space%20Mission%20(1).csv"
           },
           "transform": [
-            {
-              "filter": "datum['Launch Vehicle'] == 'Long March 2F'"
-            },
-            {
-              "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'",
-              "as": "Status"
-            },
-            {
-              "aggregate": [{"op": "count", "as": "count"}],
-              "groupby": ["Status"]
-            },
-            {
-              "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}]
-            },
-            {
-              "calculate": "datum.count / datum.total * 100",
-              "as": "percentage"
-            },
-            {
-              "calculate": "format(round(datum.percentage), '.0f') + '%'",
-              "as": "pct_label"
-            },
-            {
-              "calculate": "'Long March 2F: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'",
-              "as": "tooltip_text"
-            }
+            { "filter": "datum['Launch Vehicle'] == 'Long March 2F'" },
+            { "calculate": "datum.Outcome == '1' ? 'Success' : 'Failure'", "as": "Status" },
+            { "aggregate": [{"op": "count", "as": "count"}], "groupby": ["Status"] },
+            { "joinaggregate": [{"op": "sum", "field": "count", "as": "total"}] },
+            { "calculate": "datum.count / datum.total * 100", "as": "percentage" },
+            { "calculate": "format(round(datum.percentage), '.0f') + '%'", "as": "pct_label" },
+            { "calculate": "'Long March 2F: ' + format(round(datum.percentage), '.0f') + '% ' + datum.Status + ' (' + format(datum.count, ',') + ' missions)'", "as": "tooltip_text" }
           ],
           "layer": [
             {
@@ -535,7 +419,7 @@
                   "type": "nominal",
                   "scale": {
                     "domain": ["Success", "Failure"],
-                    "range": ["#2ca02c", "#d62728"]
+                    "range": ["#3B7691", "#D17A40"]
                   },
                   "legend": null
                 },

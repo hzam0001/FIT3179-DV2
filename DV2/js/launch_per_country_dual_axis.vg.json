@@ -2,15 +2,15 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
   "title": {
-    "text": "How Has the Number of Countries Involved in Space Exploration Varied? (1957–2020)",
+    "text": "Global Participation in Space Exploration (1957 to 2020)",
     "anchor": "middle",
-    "fontSize": 16,
+    "fontSize": 20,
     "color": "white"
   },
   "hconcat": [
     {
       "width": 550,
-      "height": 400,
+      "height": 450,
       "data": {
         "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/All_space_missions(2).csv"
       },

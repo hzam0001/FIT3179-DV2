@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 600,
+  "width": 950,
+  "height": 500,
   "background": "transparent",
   "title": {
     "text": "Launch Vehicle Performance: Success Rate vs Mission Count",
     "dy": -20,
-    "fontSize": 16,
+    "fontSize": 20,
     "anchor": "middle",
     "color": "white"
   },

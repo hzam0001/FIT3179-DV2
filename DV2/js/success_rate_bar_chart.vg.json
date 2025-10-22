@@ -6,12 +6,12 @@
   "title": {
     "text": "Mission success and failure rates from 1957 to 2020",
     "anchor": "middle",
-    "fontSize": 17,
+    "fontSize": 20,
     "fontWeight": "bold",
     "offset": 20,
     "color": "white"
   },
-  "width": 600,
+  "width": 570,
   "height": 200,
   "data": { 
     "url": "https://raw.githubusercontent.com/hzam0001/FIT3179-DV2/refs/heads/main/DV2/data/total_missions.csv" 
@@ -99,8 +99,9 @@
       "type": "nominal",
       "scale": {
         "domain": ["Success", "Failure"],
-        "range": ["#10b981", "#ef4444"]
-      }
+        "range": ["#3B7691", "#D17A40"]
+      },
+      "legend": null
     },
     "tooltip": [
       {
